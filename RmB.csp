@@ -1,0 +1,66 @@
+---------------------------------------------
+--		Events for EB
+---------------------------------------------
+EventsB = {goto.EB.EA,goto.EB.ED,goto.EA.EB}
+Monitors2B = union(EventsD,Monitors5)
+
+MonitorsB = union({x | x<- Monitors2B, not approachOne}, Monitors5)
+
+---------------------------------------------
+--		Processes for EB
+---------------------------------------------
+B0 = (goto!EB?_:{EA,ED} -> B0) [] (goto!EA!EB -> B0) 
+B1 = (goto!EB?_:{EA,ED} -> B1)
+
+---------------------------------------------
+--		Behaviour for EB
+---------------------------------------------
+BehaviourB = let B(n) =  (n > 0 & goto!EB?_:{EA,ED} -> B(n-1))
+					[] (n <= MaxAgentsEA & goto!EA!EB -> B(n+1))
+				within B(0)
+
+---------------------------------------------
+--		Requirement for EB
+---------------------------------------------
+Pattern2B = let P(n) = 
+		   	   		(goto!EB!EA -> if(n == MaxAgentsPair) then adapt!n-1 -> ack -> P(n-1) else if(n > 0) then P(n-1) else P(0)) 
+		   	 	[] (goto!EA!EB -> if(n >= MaxAgentsPair-1) then adapt!n+1 -> ack -> P(MaxAgentsPair) else P(n+1))
+				[] (goto!ED!Corr -> if(n == MaxAgentsPair) then adapt!n-1 -> ack -> P(n-1) else if (n >0) then P(n-1) else P(0)) 
+				[] (goto!EB!ED -> P(n))
+				[] (emergency -> RUN(union(EventsB,Monitors2B)))
+			within P(0)
+Pi2B =  adapt?v  ->  if v == MaxAgentsPair then r!0 -> ack -> Pi2B else r!1 -> ack -> Pi2B
+
+
+Pattern5B = (emergency -> adaptE -> ack -> Pattern5B) [] (goto?_: {x | goto.x <- EventsB} -> Pattern5B)
+PiEmergencyB =  adaptE  ->  r!1 -> ack -> PiEmergencyB
+
+---------------------------------------------
+--		Adaptatable Process
+---------------------------------------------
+SysB = 
+		let 
+			map = \ id @ (if id == 0 then B1
+						 else if id == 1 then B0
+						 else SKIP)
+			StateRec = (r?id : Processes -> (map(id) /\ StateRec))
+		within
+			B0 /\ StateRec
+
+---------------------------------------------
+--		Composition
+---------------------------------------------
+RmB = let
+			eventsR2B = union(EventsB,Monitors2B)
+			eventsR5 = union(EventsB,Monitors5)
+
+			events = Union({eventsR2B,eventsR5})
+			R5 = (PiEmergencyB [|{|adaptE,ack|}|] Pattern5B)  \ {|adaptE,ack|}
+			R2B = (Pi2B [|{|adapt,ack|}|] Pattern2B) \ {|adapt,ack|}
+			
+			FirstApproach = R5 [| inter(EventsB,eventsR5) |] BehaviourB
+			SecondApproach = BehaviourB [|inter(EventsB, events) |] (R5 [| inter(eventsR5,eventsR2B) |] R2B) 
+		
+			proc = (SysB [| union(EventsB,{|r|}) |] (if(approachOne) then FirstApproach else SecondApproach)) \ {| r |}
+		within 
+			normal(proc)

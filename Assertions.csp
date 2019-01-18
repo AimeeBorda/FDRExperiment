@@ -1,0 +1,52 @@
+---------- approach two of pair-wise count ---------- 
+approachOne = False
+
+ExtraRequirement = Requirement2A [|{emergency,goto.EA.EB,goto.EB.EA,goto.EB.ED}|] Requirement2B
+
+
+Requirement2A = let P(a,b) =  (a > 0  & goto!EA!EB -> P(a-1,b+1)) 
+								[] (b > 0  & goto!EB!EA -> P(a+1,b-1))
+								[] (b > 0 & goto!EB!ED -> P(a,b-1)) 
+								[] (a > 0  & goto!EA!Corr -> P(a-1,b)) 
+								[] (a + b < MaxAgentsPair & goto!Corr!EA -> P(a+1,b))
+								[] (goto!ED!Corr -> P(a,b))
+								[] (emergency -> RUN(Union({MonitorsA,MonitorsB,EventsA,EventsB})))	
+			within P(0,0)
+
+Requirement2B = let P(b,d) =  (d + b < MaxAgentsPair & goto!EA!EB -> P(b+1,d)) 
+								[] (b > 0  & goto!EB!EA -> P(b-1,d))
+								[] (b > 0  & goto!EB!ED -> P(b-1,d+1)) 
+								[] (d > 0  & goto!ED!Corr -> P(b,d-1)) 
+								[] (emergency -> RUN(Union({MonitorsB,MonitorsD,EventsB,EventsD})))		
+				within P(0,0)
+
+---------- The people in the building should be able to reach the nearest emergency exit (With no composition) ---------- 
+
+assert Requirement5D [F=  RmD
+assert Requirement5B [F=  RmB
+assert Requirement5A [F=  RmA
+
+---------------------------------------------
+--	 Requirement 2 (First Approach)
+---------------------------------------------
+
+assert (Requirement2 [| event("D","B") |] RmB)  [T= RoomBD 
+assert (Requirement2 [| event("D","AB") |] RoomAB)  [T= ExhibitionArea 
+
+---------------------------------------------
+--	 Requirement 4 (First Approach)
+---------------------------------------------
+
+assert Requirement4 [T= ExhibitionArea 
+
+---------------------------------------------
+--	 Requirement 2A & 2B (Second Approach)
+---------------------------------------------
+assert Requirement2B  [T= RoomBD 
+assert Requirement2A [T= RoomAB
+assert Requirement2A [| event("AB","D")|] RmD [T= ExhibitionArea 
+assert Requirement2B [| event("BD","A")|] RmA  [T= ExhibitionArea 		
+assert ExtraRequirement [T= ExhibitionArea 
+
+assert Requirement5A [|event("A","B") |] RmB [F=  (RmA /\ (emergency -> (BehaviourA ||| RUN({emergency}))))	 [|event("A","B") |] RmB
+assert Requirement5A [|event("A","BD") |] RoomBD [F=  (RmA /\ (emergency -> (BehaviourA ||| RUN({emergency}))))	 [|event("A","BD") |] RoomBD

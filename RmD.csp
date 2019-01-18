@@ -1,0 +1,70 @@
+---------------------------------------------
+--		Event for EB
+---------------------------------------------
+EventsD = {goto.EB.ED,goto.ED.Corr}
+Monitors2 = {|emergency|}
+
+MonitorsD = union(Monitors5, {x | x <- Monitors2, approachOne})
+
+---------------------------------------------
+--		Processes for ED
+---------------------------------------------
+
+D0 = (goto!ED!Corr -> D0) [] (goto!EB!ED -> D0)
+D1 = goto!ED!Corr -> D1
+
+---------------------------------------------
+--		Behaviour for ED
+---------------------------------------------
+
+BehaviourD = let D(n) =  (n > 0 & goto!ED!Corr -> D(n-1))
+					[] (n <= MaxAgentsEA & goto!EB!ED -> D(n+1))
+				within D(0)
+
+---------------------------------------------
+--		Requirements for ED
+---------------------------------------------
+
+Pattern2 = let P(n) = 
+				   (goto!ED!Corr -> if n==MaxAgents then adapt!n-1 -> ack -> P(n-1) else if n > 0 then P(n-1) else P(0))
+				[] (goto!EB!ED -> if n >= MaxAgents - 1 then adapt!MaxAgents -> ack -> P(MaxAgents) else P(n+1))
+				[] (emergency -> RUN(union(EventsD,Monitors2)))
+		within P(0)
+Pi2 =  adapt?v  ->  if v == MaxAgents then r!0 -> ack -> Pi2 else r!1 -> ack -> Pi2	
+
+
+Pattern5D = (emergency -> adaptE -> ack -> Pattern5D) [] (goto?_: {x | goto.x <- EventsD} -> Pattern5D)
+Pi5D =  adaptE  ->  r!1 -> ack -> Pi5D
+
+---------------------------------------------
+--		Adaptatable Process
+---------------------------------------------
+
+SysD = 
+		let 
+			map = \ id @ (if id == 0 then D1
+						 else if id == 1 then D0
+						 else SKIP)
+			SysDRec = (r?id : Processes -> (map(id) /\ SysDRec))
+		within
+			D0 /\ SysDRec
+
+---------------------------------------------
+--		Composition
+---------------------------------------------
+
+RmD = let
+		eventsR2 = union(EventsD,Monitors2)
+		eventsR5 = union(EventsD,Monitors5)
+
+		events = union(eventsR2,eventsR5)
+		R2 = (Pattern2 [|{|adapt,ack|}|] Pi2) \ {|adapt,ack|}
+		R5 = (Pattern5D [|{|adaptE,ack|}|] Pi5D) \ {|adaptE,ack|}
+
+		FirstApproach = BehaviourD [|inter(EventsD,events)|] (R2  [|inter(eventsR2,eventsR5)|] R5)
+		SecondApproach = BehaviourD [|inter(EventsD,eventsR5)|] R5
+
+		proc = (SysD [| union(EventsD,{| r |}) |] (if(approachOne) then FirstApproach else SecondApproach)) \ {| r |}
+	within 
+		normal(proc)
+

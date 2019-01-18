@@ -1,0 +1,23 @@
+--------- The people in the building should be able to reach the nearest emergency exit (With no composition) ---------- 
+approachOne = True
+
+assert Requirement5D [F=  RmD
+assert Requirement5B [F=  RmB
+assert Requirement5A [F=  RmA
+
+---------------------------------------------
+--	 Requirement 2 (First Approach)
+---------------------------------------------
+
+assert Requirement2 [T= RmD 
+assert (Requirement2 [| event("D","B") |] RmB)  [T= RoomBD  
+assert (Requirement2 [| event("D", "AB") |] RoomAB)  [T= ExhibitionArea 
+
+---------------------------------------------
+--	 Requirement 4 (First Approach)
+---------------------------------------------
+
+assert Requirement4 [T= ExhibitionArea 
+
+assert Requirement5A [|event("A","B") |] RmB [F=  (RmA /\ (emergency -> (BehaviourA ||| RUN({emergency}))))	 [|event("A","B") |] RmB
+assert Requirement5A [|event("A","BD") |] RoomBD [F=  (RmA /\ (emergency -> (BehaviourA ||| RUN({emergency}))))	 [|event("A","BD") |] RoomBD
