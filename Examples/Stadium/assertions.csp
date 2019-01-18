@@ -1,0 +1,19 @@
+
+
+
+instance LSec = Sec(L.0)
+instance HSec = Sec(H.1)
+instance VIPSec = Sec(VIP.2)
+
+---------------------------------------------
+--		Verification for Requirements
+---------------------------------------------
+
+assert LSec::ReqA [T= LSec::Section 
+
+assert LSec::ReqB [T= LSec::Section 
+assert LSec::ReqC [T= LSec::Section 
+assert LSec::ReqD [T= LSec::Section 
+assert LSec::ReqE [T= LSec::Section 
+assert LSec::ReqF [T= LSec::Section 
+assert LSec::ReqG [T= LSec::Section 

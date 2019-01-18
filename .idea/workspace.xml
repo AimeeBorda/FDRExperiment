@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14a23320-90e0-478a-84da-4df3ada2795d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assertions.csp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/Assertions.csp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AssertionsF.csp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/AssertionsF.csp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExhibitionArea.csp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/ExhibitionArea.csp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LatexTemplateArt.tex" beforeDir="false" afterPath="$PROJECT_DIR$/LatexTemplateArt.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RmA.csp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/RmA.csp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RmB.csp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/RmB.csp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RmD.csp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/RmD.csp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Section.csp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Stadium/Section.csp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stadium.csp" beforeDir="false" afterPath="$PROJECT_DIR$/Examples/Stadium/Stadium.csp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,27 +34,27 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="csp" value="8" />
-          <entry key="java" value="3" />
-          <entry key="tex" value="6" />
+          <entry key="csp" value="9" />
+          <entry key="java" value="4" />
+          <entry key="tex" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="3" />
-          <entry key="PLAIN_TEXT" value="14" />
+          <entry key="JAVA" value="4" />
+          <entry key="PLAIN_TEXT" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="csp" value="83" />
-          <entry key="java" value="2357" />
+          <entry key="java" value="2393" />
           <entry key="tex" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2357" />
+          <entry key="JAVA" value="2393" />
           <entry key="PLAIN_TEXT" value="109" />
         </counts>
       </usages-collector>
@@ -53,10 +63,13 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assertions.csp">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="51" column="140" selection-start-line="51" selection-start-column="140" selection-end-line="51" selection-end-column="140" />
+            <state relative-caret-position="495">
+              <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,10 +93,11 @@
         <option value="$PROJECT_DIR$/assertions.csp" />
         <option value="$PROJECT_DIR$/LatexTemplate.tex" />
         <option value="$PROJECT_DIR$/Stadium.csp" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/AssertionsF.csp" />
         <option value="$PROJECT_DIR$/ExhibitionArea.csp" />
         <option value="$PROJECT_DIR$/Assertions.csp" />
+        <option value="$PROJECT_DIR$/Examples/Stadium/assertions.csp" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -114,6 +128,30 @@
             <path>
               <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
               <item name="Experiment" type="462c0819:PsiDirectoryNode" />
+              <item name="Examples" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Experiment" type="462c0819:PsiDirectoryNode" />
+              <item name="Examples" type="462c0819:PsiDirectoryNode" />
+              <item name="ArtGallery" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Experiment" type="462c0819:PsiDirectoryNode" />
+              <item name="Examples" type="462c0819:PsiDirectoryNode" />
+              <item name="ArtGallery" type="462c0819:PsiDirectoryNode" />
+              <item name="ExhibitionArea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Experiment" type="462c0819:PsiDirectoryNode" />
+              <item name="Examples" type="462c0819:PsiDirectoryNode" />
+              <item name="Stadium" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Experiment" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -129,12 +167,18 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547836551675" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547836929978" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15213358" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Examples/Stadium" />
+      <recent name="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -172,12 +216,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1547817548749</updated>
-      <workItem from="1547817553264" duration="10512000" />
+      <workItem from="1547817553264" duration="10803000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10512000" />
+    <option name="totallyTimeSpent" value="10803000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -197,7 +241,7 @@
       <window_info id="UI Designer" />
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Capture Tool" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24980143" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24980143" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Tool Output" />
@@ -208,7 +252,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.329927" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4970803" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4970803" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -294,31 +338,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ExhibitionArea.csp">
+    <entry file="file://$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/ExhibitionArea.csp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AssertionsF.csp">
+    <entry file="file://$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/AssertionsF.csp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Section.csp">
+    <entry file="file://$PROJECT_DIR$/Examples/Stadium/Section.csp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/LatexTemplate.tex">
@@ -328,17 +362,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stadium.csp">
+    <entry file="file://$PROJECT_DIR$/Examples/Stadium/Stadium.csp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="26" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assertions.csp">
+    <entry file="file://$PROJECT_DIR$/LatexTemplateArt.tex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="51" column="140" selection-start-line="51" selection-start-column="140" selection-end-line="51" selection-end-column="140" />
+        <state relative-caret-position="480">
+          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/Assertions.csp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examples/Stadium/assertions.csp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
