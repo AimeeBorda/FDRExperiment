@@ -1,0 +1,39 @@
+---------------------------------------------
+--		Data Definitions
+---------------------------------------------
+transparent normal
+
+datatype State = Before | During | After
+datatype IDS = H.{0..NumSections} | L.{0..NumSections} | VIP.{0..NumSections} | Corr  | Emp
+
+subtype SectionID = H.{0..NumSections} | L.{0..NumSections} | VIP.{0..NumSections}  | Corr
+subtype Agent = VIP.{0..NumSections} | H.{0..NumSections} | L.{0..NumSections}  | Emp
+
+
+NumSections = |NUMSECTIONS| -- 35
+SectionSize = 10
+---------------------------------------------
+--		First-order events
+---------------------------------------------
+
+channel goto : Agent.SectionID.SectionID
+channel event : State
+channel alarm : SectionID
+channel wind
+channel noisy : SectionID
+channel open : SectionID.SectionID
+channel lights : SectionID.Bool
+channel empty 
+
+---------------------------------------------
+--		Encoding
+---------------------------------------------
+include "Section.csp"
+
+
+
+---------------------------------------------
+--		Assertions
+---------------------------------------------
+
+include "assertions.csp"
