@@ -10,8 +10,8 @@ subtype SectionID = H.{0..NumSections} | L.{0..NumSections} | VIP.{0..NumSection
 subtype Agent = VIP.{0..NumSections} | H.{0..NumSections} | L.{0..NumSections}  | Emp
 
 
-NumSections = |NUMSECTIONS| -- 35
-SectionSize = 10
+NumSections = 35
+SectionSize = 100
 ---------------------------------------------
 --		First-order events
 ---------------------------------------------

@@ -32,7 +32,7 @@ class FDRExperiment {
     public void getData() throws IOException, InterruptedException {
 
         for (int i = this.min; i <= this.max; i += this.interval) {
-
+            System.out.print("Started by api "+i+" for "+placeholder) ;
             this.hashMap.put(this.placeholder, String.valueOf(i));
             File file = modifyFile(this.fileName, this.placeholder, this.hashMap);
 
@@ -40,6 +40,7 @@ class FDRExperiment {
                 generateLegends(file);
             }
             Stats s = byAPI(file);
+            System.out.println(" now moved on to command line") ;
             byCommandLine(file, s);
             statistics.put(i, s);
 
@@ -47,7 +48,7 @@ class FDRExperiment {
         }
 
         HashMap<String, String> map = GenerateLatex.createLatexFile(legends, statistics);
-        modifyFile("LatexTemplate.tex", this.placeholder, map);
+        modifyFile("LatexTemplate.tex", this.placeholder + this.min + this.max+this.interval, map);
 
     }
 

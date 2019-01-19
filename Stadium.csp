@@ -10,7 +10,7 @@ subtype SectionID = H.{0..NumSections} | L.{0..NumSections} | VIP.{0..NumSection
 subtype Agent = VIP.{0..NumSections} | H.{0..NumSections} | L.{0..NumSections}  | Emp
 
 
-NumSections = |NUMSECTIONS| -- 35
+NumSections = |NUMSECTIONS|
 SectionSize = |SECTIONSIZE|
 ---------------------------------------------
 --		First-order events
@@ -18,11 +18,10 @@ SectionSize = |SECTIONSIZE|
 
 channel goto : Agent.SectionID.SectionID
 channel event : State
-channel alarm : SectionID
+channel alarm
 channel wind
-channel noisy : SectionID
+channel noisy
 channel open : SectionID.SectionID
-channel lights : SectionID.Bool
 channel empty 
 
 ---------------------------------------------
