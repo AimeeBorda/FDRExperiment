@@ -8,10 +8,9 @@ import uk.ac.ox.cs.fdr.fdr;
 import java.io.*;
 import java.util.*;
 
-class Plot {
+class FDRExperiment {
 
     HashMap hashMap;
-    String prefix;
     String fileName;
     int interval;
     int max;
@@ -21,22 +20,21 @@ class Plot {
     LinkedHashMap<Integer, Stats> statistics = new LinkedHashMap<>();
     ArrayList<String> legends = new ArrayList<>();
 
-    public Plot(int interval, int max, int min, String placeholder, String fileName, String prefix, HashMap hashMap) {
+    public FDRExperiment(int interval, int max, int min, String placeholder, String fileName,  HashMap hashMap) {
         this.interval = interval;
         this.max = max;
         this.min = min;
         this.placeholder = placeholder;
         this.fileName = fileName;
-        this.prefix = prefix;
         this.hashMap = hashMap;
     }
 
-    public void drawGraph() throws IOException, InterruptedException {
+    public void getData() throws IOException, InterruptedException {
 
         for (int i = this.min; i <= this.max; i += this.interval) {
 
             this.hashMap.put(this.placeholder, String.valueOf(i));
-            File file = modifyFile(this.fileName, this.prefix, this.hashMap);
+            File file = modifyFile(this.fileName, this.placeholder, this.hashMap);
 
             if (i == this.min) {
                 generateLegends(file);
@@ -49,7 +47,7 @@ class Plot {
         }
 
         HashMap<String, String> map = GenerateLatex.createLatexFile(legends, statistics);
-        modifyFile("LatexTemplate.tex", this.prefix, map);
+        modifyFile("LatexTemplate.tex", this.placeholder, map);
 
     }
 
