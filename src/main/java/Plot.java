@@ -1,3 +1,4 @@
+import org.json.JSONArray;
 import org.json.JSONObject;
 import uk.ac.ox.cs.fdr.Assertion;
 import uk.ac.ox.cs.fdr.AssertionList;
@@ -5,14 +6,9 @@ import uk.ac.ox.cs.fdr.Session;
 import uk.ac.ox.cs.fdr.fdr;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.*;
 
 class Plot {
-
-    private final String[] colors = {"red", "blue", "green", "yellow", "purple", "orange", "black", "brown", "gray", "awesome", "cyan", "azure", "bazaar", "blue-green", "brightube"};
 
     HashMap hashMap;
     String prefix;
@@ -22,9 +18,8 @@ class Plot {
     int min;
     String placeholder;
 
-    ArrayList<StringBuilder> compileTime = null;
-    ArrayList<StringBuilder> states = null;
-    ArrayList<StringBuilder> transitions = null;
+    LinkedHashMap<Integer, Stats> statistics = new LinkedHashMap<>();
+    ArrayList<String> legends = new ArrayList<>();
 
     public Plot(int interval, int max, int min, String placeholder, String fileName, String prefix, HashMap hashMap) {
         this.interval = interval;
@@ -37,74 +32,76 @@ class Plot {
     }
 
     public void drawGraph() throws IOException, InterruptedException {
-        for (int i = this.min; i <= this.max; i += this.interval) {
-            this.hashMap.put(this.placeholder,String.valueOf(i));
-            File file = modifyFile(this.fileName,  this.prefix, this.hashMap);
 
-            byCommandLine(file, String.valueOf(i));
-            byAPI(file, String.valueOf(i));
+        for (int i = this.min; i <= this.max; i += this.interval) {
+
+            this.hashMap.put(this.placeholder, String.valueOf(i));
+            File file = modifyFile(this.fileName, this.prefix, this.hashMap);
+
+            if (i == this.min) {
+                generateLegends(file);
+            }
+            Stats s = byAPI(file);
+            byCommandLine(file, s);
+            statistics.put(i, s);
 
             file.delete();
         }
 
-        createLatexFile();
+        HashMap<String, String> map = GenerateLatex.createLatexFile(legends, statistics);
+        modifyFile("LatexTemplate.tex", this.prefix, map);
 
     }
 
-    private void createLatexFile() throws IOException {
-        StringBuilder resCompileTime = new StringBuilder();
-        StringBuilder resStates = new StringBuilder();
-        StringBuilder resTransition = new StringBuilder();
-        for (int i = 0; i < compileTime.size(); i++) {
-            resCompileTime.append("\\addplot[color=" + colors[i] + ",mark=x] coordinates {\n" + compileTime.get(i).toString() + "};\n");
-            resStates.append("\\addplot[color=" + colors[i] + ",mark=x] coordinates {\n" + states.get(i).toString() + "};\n");
-            resTransition.append("\\addplot[color=" + colors[i] + ",mark=x] coordinates {\n" + transitions.get(i).toString() + "};\n");
-        }
-        modifyFile("LatexTemplate.tex", this.prefix, new HashMap<String,String>(){{
-            put("compileTime", resCompileTime.toString());
-            put("states",resStates.toString());
-            put("transitions",resTransition.toString());
-        }});
+    private void generateLegends(File file) {
+        Session session = new Session();
+        session.loadFile(file.getName());
+
+        for (Assertion assertion : session.assertions())
+            legends.add(assertion.toString().substring(0,assertion.toString().indexOf("[") - 1 ));
+
     }
 
-    private void byCommandLine(File file,String xaxis) throws IOException, InterruptedException {
+    private void byCommandLine(File file, Stats s) throws IOException, InterruptedException {
 
         Process p = Runtime.getRuntime().exec(new String[]{"bash", "-c", "/Applications/FDR4.app/Contents/MacOS/refines \"" + file.getAbsolutePath() + "\" --format=json"});
         p.waitFor();
 
         BufferedReader b = new BufferedReader(new InputStreamReader(p.getInputStream()));
         JSONObject jsonObj = new JSONObject(b.readLine());
+        Iterator<Object> results = ((JSONArray) jsonObj.get("results")).iterator();
 
+        while (results.hasNext()) {
+            JSONObject next = (JSONObject) results.next();
+            s.transitions.add(next.getDouble("visited_transitions"));
+            s.states.add(next.getDouble("visited_states"));
+            s.plys.add(next.getDouble("visited_plys"));
+        }
         b.close();
     }
 
-    private void byAPI(File file,String xaxis) {
+    private Stats byAPI(File file) {
 
+        Stats s = new Stats();
         Session session = new Session();
         session.loadFile(file.getName());
 
 
         AssertionList assertions = session.assertions();
-        if (compileTime == null) {
-            compileTime = (ArrayList<StringBuilder>) IntStream.rangeClosed(0, assertions.size()).mapToObj(StringBuilder::new).collect(Collectors.toList());
-            states = (ArrayList<StringBuilder>) IntStream.rangeClosed(0, assertions.size()).mapToObj(StringBuilder::new).collect(Collectors.toList());
-            transitions = (ArrayList<StringBuilder>) IntStream.rangeClosed(0, assertions.size()).mapToObj(StringBuilder::new).collect(Collectors.toList());
-        }
+        s.initializeLists(assertions.size());
 
-        for (int k = 0; k < assertions.size(); k++) {
-            Assertion assertion = assertions.get(k);
+        for (Assertion assertion : assertions) {
 
-            double time1 = System.nanoTime();
+            double time = System.nanoTime();
             assertion.execute(null);
-            time1 = (System.nanoTime() - time1) / 1000000.0;
+            time = (System.nanoTime() - time) / 1000000.0;
 
-
-            double time = time1;
-
-            compileTime.get(k).append("(" +xaxis + "," + time + " )\n");
+            s.compileTime.add(time);
         }
 
         fdr.libraryExit();
+
+        return s;
     }
 
     private File modifyFile(String filePath, String prefix, HashMap<String, String> def) throws IOException {

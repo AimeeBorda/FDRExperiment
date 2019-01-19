@@ -1,5 +1,6 @@
 \documentclass{article}
 
+\usepackage{multirow}
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
 
@@ -12,17 +13,38 @@
 \definecolor{brightube}{rgb}{0.82, 0.62, 0.91}
 
 \begin{document}
+\begin{figure}[t]
 \begin{tikzpicture}
-\begin{axis}[xlabel=Size,ylabel=Time]
-          	|COMPILETIME|
+\begin{axis}[xlabel=Size,ylabel=Time,legend style={at={(0.5,-0.1)},anchor=north}]
+          	|COMPILETIMEGRAPH|
 \end{axis}
-
- \begin{axis}[xlabel=Size,ylabel=Time]
- 	|STATES|
- \end{axis}
-
- \begin{axis}[xlabel=Size,ylabel=Time]
- 	|TRANSITIONS|
- \end{axis}
 \end{tikzpicture}
+
+\begin{tikzpicture}
+ \begin{axis}[xlabel=Size,ylabel=States,legend style={at={(0.5,-0.1)},anchor=north}]
+ 	|STATESGRAPH|
+ \end{axis}
+ \end{tikzpicture}
+
+\begin{tikzpicture}
+ \begin{axis}[xlabel=Size,ylabel=Transitions,legend style={at={(0.5,-0.1)},anchor=north}]
+ 	|TRANSITIONSGRAPH|
+ \end{axis}
+ \end{tikzpicture}
+
+\begin{tikzpicture}
+  \begin{axis}[xlabel=Size,ylabel=Plys,legend style={at={(0.5,-0.1)},anchor=north}]
+  	|PLYSGRAPH|
+  \end{axis}
+\end{tikzpicture}
+\end{figure}
+
+	\begin{table}
+		\centering
+		\resizebox{\textwidth}{!}{
+			\begin{tabular}{||COLUMNS||} \hline
+				|STATSTABLE|
+			\end{tabular}
+		}
+	\end{table}
 \end{document}

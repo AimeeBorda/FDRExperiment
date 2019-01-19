@@ -1,0 +1,274 @@
+\documentclass{article}
+
+\usepackage{multirow}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\pagestyle{empty}
+
+\definecolor{awesome}{rgb}{1.0, 0.13, 0.32}
+\definecolor{azure}{rgb}{0.0, 0.5, 1.0}
+\definecolor{bazaar}{rgb}{0.6, 0.47, 0.48}
+\definecolor{blue-green}{rgb}{0.0, 0.87, 0.87}
+\definecolor{brightube}{rgb}{0.82, 0.62, 0.91}
+
+\begin{document}
+\begin{figure}[t]
+\begin{tikzpicture}
+\begin{axis}[xlabel=Size,ylabel=Time,legend style={at={(0.5,-0.1)},anchor=north}]
+          	 \addlegendentry{LSec::ReqA} 
+ \addplot[color=red,mark=x] coordinates {
+(10,570.777656)
+(15,211.196921)
+(20,275.779318)
+(25,274.966187)
+(30,311.274038)
+};
+ \addlegendentry{LSec::ReqB} 
+ \addplot[color=blue,mark=x] coordinates {
+(10,35.896702)
+(15,38.125988)
+(20,38.803038)
+(25,43.755829)
+(30,44.432559)
+};
+ \addlegendentry{LSec::ReqC} 
+ \addplot[color=green,mark=x] coordinates {
+(10,33.526741)
+(15,31.747752)
+(20,34.525354)
+(25,39.522478)
+(30,39.893282)
+};
+ \addlegendentry{LSec::ReqD} 
+ \addplot[color=yellow,mark=x] coordinates {
+(10,35.304031)
+(15,37.334013)
+(20,41.092189)
+(25,41.659413)
+(30,43.626596)
+};
+ \addlegendentry{LSec::ReqE} 
+ \addplot[color=purple,mark=x] coordinates {
+(10,35.321404)
+(15,33.487166)
+(20,35.428703)
+(25,40.249745)
+(30,42.72622)
+};
+ \addlegendentry{LSec::ReqF} 
+ \addplot[color=orange,mark=x] coordinates {
+(10,31.235164)
+(15,33.36688)
+(20,37.347345)
+(25,42.605967)
+(30,44.001745)
+};
+ \addlegendentry{LSec::ReqG} 
+ \addplot[color=black,mark=x] coordinates {
+(10,61.147563)
+(15,62.24921)
+(20,65.244453)
+(25,71.276991)
+(30,77.197689)
+};
+
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+ \begin{axis}[xlabel=Size,ylabel=States,legend style={at={(0.5,-0.1)},anchor=north}]
+ 	\addplot[color=red,mark=x] coordinates {
+(10,227.0)
+(15,327.0)
+(20,427.0)
+(25,527.0)
+(30,627.0)
+};
+\addplot[color=blue,mark=x] coordinates {
+(10,256.0)
+(15,366.0)
+(20,476.0)
+(25,586.0)
+(30,696.0)
+};
+\addplot[color=green,mark=x] coordinates {
+(10,227.0)
+(15,327.0)
+(20,427.0)
+(25,527.0)
+(30,627.0)
+};
+\addplot[color=yellow,mark=x] coordinates {
+(10,471.0)
+(15,681.0)
+(20,891.0)
+(25,1101.0)
+(30,1311.0)
+};
+\addplot[color=purple,mark=x] coordinates {
+(10,227.0)
+(15,327.0)
+(20,427.0)
+(25,527.0)
+(30,627.0)
+};
+\addplot[color=orange,mark=x] coordinates {
+(10,260.0)
+(15,375.0)
+(20,490.0)
+(25,605.0)
+(30,720.0)
+};
+\addplot[color=black,mark=x] coordinates {
+(10,681.0)
+(15,986.0)
+(20,1291.0)
+(25,1596.0)
+(30,1901.0)
+};
+
+ \end{axis}
+ \end{tikzpicture}
+
+\begin{tikzpicture}
+ \begin{axis}[xlabel=Size,ylabel=Transitions,legend style={at={(0.5,-0.1)},anchor=north}]
+ 	\addplot[color=red,mark=x] coordinates {
+(10,7562.0)
+(15,11132.0)
+(20,14702.0)
+(25,18272.0)
+(30,21842.0)
+};
+\addplot[color=blue,mark=x] coordinates {
+(10,8279.0)
+(15,12139.0)
+(20,15999.0)
+(25,19859.0)
+(30,23719.0)
+};
+\addplot[color=green,mark=x] coordinates {
+(10,7562.0)
+(15,11132.0)
+(20,14702.0)
+(25,18272.0)
+(30,21842.0)
+};
+\addplot[color=yellow,mark=x] coordinates {
+(10,14765.0)
+(15,21770.0)
+(20,28775.0)
+(25,35780.0)
+(30,42785.0)
+};
+\addplot[color=purple,mark=x] coordinates {
+(10,7562.0)
+(15,11132.0)
+(20,14702.0)
+(25,18272.0)
+(30,21842.0)
+};
+\addplot[color=orange,mark=x] coordinates {
+(10,8337.0)
+(15,12277.0)
+(20,16217.0)
+(25,20157.0)
+(30,24097.0)
+};
+\addplot[color=black,mark=x] coordinates {
+(10,19920.0)
+(15,29395.0)
+(20,38870.0)
+(25,48345.0)
+(30,57820.0)
+};
+
+ \end{axis}
+ \end{tikzpicture}
+
+\begin{tikzpicture}
+  \begin{axis}[xlabel=Size,ylabel=Plys,legend style={at={(0.5,-0.1)},anchor=north}]
+  	\addplot[color=red,mark=x] coordinates {
+(10,18.0)
+(15,23.0)
+(20,28.0)
+(25,33.0)
+(30,38.0)
+};
+\addplot[color=blue,mark=x] coordinates {
+(10,18.0)
+(15,23.0)
+(20,28.0)
+(25,33.0)
+(30,38.0)
+};
+\addplot[color=green,mark=x] coordinates {
+(10,18.0)
+(15,23.0)
+(20,28.0)
+(25,33.0)
+(30,38.0)
+};
+\addplot[color=yellow,mark=x] coordinates {
+(10,19.0)
+(15,24.0)
+(20,29.0)
+(25,34.0)
+(30,39.0)
+};
+\addplot[color=purple,mark=x] coordinates {
+(10,18.0)
+(15,23.0)
+(20,28.0)
+(25,33.0)
+(30,38.0)
+};
+\addplot[color=orange,mark=x] coordinates {
+(10,18.0)
+(15,23.0)
+(20,28.0)
+(25,33.0)
+(30,38.0)
+};
+\addplot[color=black,mark=x] coordinates {
+(10,20.0)
+(15,25.0)
+(20,30.0)
+(25,35.0)
+(30,40.0)
+};
+
+  \end{axis}
+\end{tikzpicture}
+\end{figure}
+
+	\begin{table}
+		\centering
+		\resizebox{\textwidth}{!}{
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|} \hline
+				& & LSec::ReqA&LSec::ReqB&LSec::ReqC&LSec::ReqD&LSec::ReqE&LSec::ReqF&LSec::ReqG\\ \hline 
+\multirow{4}{*}{10} & States & 227.0&256.0&227.0&471.0&227.0&260.0&681.0\\[1mm]   \cline{2-9} 
+ & Transitions &7562.0&8279.0&7562.0&14765.0&7562.0&8337.0&19920.0\\[1mm]  \cline{2-9} 
+  & Plys & 18.0&18.0&18.0&19.0&18.0&18.0&20.0\\[1mm]  \cline{2-9} 
+  & Time &570.78&35.9&33.53&35.3&35.32&31.24&61.15\\[1mm] \hline 
+\multirow{4}{*}{15} & States & 327.0&366.0&327.0&681.0&327.0&375.0&986.0\\[1mm]   \cline{2-9} 
+ & Transitions &11132.0&12139.0&11132.0&21770.0&11132.0&12277.0&29395.0\\[1mm]  \cline{2-9} 
+  & Plys & 23.0&23.0&23.0&24.0&23.0&23.0&25.0\\[1mm]  \cline{2-9} 
+  & Time &211.2&38.13&31.75&37.33&33.49&33.37&62.25\\[1mm] \hline 
+\multirow{4}{*}{20} & States & 427.0&476.0&427.0&891.0&427.0&490.0&1291.0\\[1mm]   \cline{2-9} 
+ & Transitions &14702.0&15999.0&14702.0&28775.0&14702.0&16217.0&38870.0\\[1mm]  \cline{2-9} 
+  & Plys & 28.0&28.0&28.0&29.0&28.0&28.0&30.0\\[1mm]  \cline{2-9} 
+  & Time &275.78&38.8&34.53&41.09&35.43&37.35&65.24\\[1mm] \hline 
+\multirow{4}{*}{25} & States & 527.0&586.0&527.0&1101.0&527.0&605.0&1596.0\\[1mm]   \cline{2-9} 
+ & Transitions &18272.0&19859.0&18272.0&35780.0&18272.0&20157.0&48345.0\\[1mm]  \cline{2-9} 
+  & Plys & 33.0&33.0&33.0&34.0&33.0&33.0&35.0\\[1mm]  \cline{2-9} 
+  & Time &274.97&43.76&39.52&41.66&40.25&42.61&71.28\\[1mm] \hline 
+\multirow{4}{*}{30} & States & 627.0&696.0&627.0&1311.0&627.0&720.0&1901.0\\[1mm]   \cline{2-9} 
+ & Transitions &21842.0&23719.0&21842.0&42785.0&21842.0&24097.0&57820.0\\[1mm]  \cline{2-9} 
+  & Plys & 38.0&38.0&38.0&39.0&38.0&38.0&40.0\\[1mm]  \cline{2-9} 
+  & Time &311.27&44.43&39.89&43.63&42.73&44.0&77.2\\[1mm] \hline 
+
+			\end{tabular}
+		}
+	\end{table}
+\end{document}
