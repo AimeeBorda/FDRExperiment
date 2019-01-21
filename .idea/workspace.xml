@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Experiment:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="14a23320-90e0-478a-84da-4df3ada2795d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Experiment_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Experiment_jar2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Examples/ExhibitionArea.csp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Examples/ExhibitionAreaFirstApp.csp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Examples/StadiumDetOrder.csp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Examples/StadiumOrder.csp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExhibitionAreaArt.csp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LatexTemplateSt.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Section.csp" beforeDir="false" afterPath="$PROJECT_DIR$/Section.csp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stadium.csp" beforeDir="false" afterPath="$PROJECT_DIR$/Stadium.csp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StadiumStadium.csp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assertions.csp" beforeDir="false" afterPath="$PROJECT_DIR$/assertions.csp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/Assertions.csp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/AssertionsF.csp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/ExhibitionArea.csp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/RmA.csp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/RmB.csp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/RmD.csp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Section.csp" beforeDir="false" afterPath="$PROJECT_DIR$/Stadium.csp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StadiumSectionSize.csp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assertions.csp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FDRExperiment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FDRExperiment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GenerateLatex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GenerateLatex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Stats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Stats.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,41 +47,49 @@
     <session id="-1278635235">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.19" value="1" />
+          <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.38" value="1" />
+          <entry key="project.open.time.45" value="1" />
+          <entry key="project.open.time.59" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.open.time.83" value="1" />
+          <entry key="project.open.time.96" value="1" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="csp" value="17" />
-          <entry key="java" value="12" />
-          <entry key="tex" value="17" />
-          <entry key="xml" value="2" />
+          <entry key="class" value="1" />
+          <entry key="csp" value="35" />
+          <entry key="java" value="27" />
+          <entry key="tex" value="22" />
+          <entry key="xml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="12" />
-          <entry key="PLAIN_TEXT" value="34" />
-          <entry key="XML" value="2" />
+          <entry key="CLASS" value="1" />
+          <entry key="JAVA" value="27" />
+          <entry key="PLAIN_TEXT" value="57" />
+          <entry key="XML" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="csp" value="131" />
-          <entry key="java" value="5367" />
+          <entry key="csp" value="214" />
+          <entry key="java" value="7717" />
           <entry key="tex" value="251" />
-          <entry key="xml" value="6" />
+          <entry key="xml" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5367" />
-          <entry key="PLAIN_TEXT" value="382" />
-          <entry key="XML" value="6" />
+          <entry key="JAVA" value="7717" />
+          <entry key="PLAIN_TEXT" value="465" />
+          <entry key="XML" value="23" />
         </counts>
       </usages-collector>
     </session>
@@ -71,38 +99,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StadiumSectionSize.csp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="25" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Section.csp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="441" selection-start-line="441" selection-end-line="441" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/FDRExperiment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+            <state relative-caret-position="675">
+              <caret line="45" column="59" lean-forward="true" selection-start-line="45" selection-start-column="59" selection-end-line="45" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,10 +118,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assertions.csp">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="15">
+              <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -122,31 +129,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GenerateLatex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="345">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LatexTemplate.tex">
+        <entry file="file://$PROJECT_DIR$/target/classes/Stats.class">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Stats.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="46" selection-end-line="73" />
+            <state relative-caret-position="45">
+              <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Stadium.csp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
-            </state>
-          </provider>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StadiumSectionSize.csp">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -160,7 +165,13 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>Corra</find>
       <find>System.out</find>
+      <find>System</find>
+      <find>asser</find>
+      <find>legend</find>
+      <find>legends</find>
+      <find>latex</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,22 +182,25 @@
       <list>
         <option value="$PROJECT_DIR$/src/GraphDraw.java" />
         <option value="$PROJECT_DIR$/AssertionsF.csp" />
-        <option value="$PROJECT_DIR$/ExhibitionArea.csp" />
         <option value="$PROJECT_DIR$/Assertions.csp" />
         <option value="$PROJECT_DIR$/Examples/Stadium/assertions.csp" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Plot.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/Stats.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GenerateLatex.java" />
         <option value="$PROJECT_DIR$/LatexTemplateSt.tex" />
         <option value="$PROJECT_DIR$/LatexTemplate.tex" />
         <option value="$PROJECT_DIR$/src/main/java/Plot.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/assertions.csp" />
-        <option value="$PROJECT_DIR$/src/main/java/FDRExperiment.java" />
         <option value="$PROJECT_DIR$/Section.csp" />
+        <option value="$PROJECT_DIR$/assertions.csp" />
         <option value="$PROJECT_DIR$/Stadium.csp" />
+        <option value="$PROJECT_DIR$/StadiumOrder.csp" />
+        <option value="$PROJECT_DIR$/StadiumDetOrder.csp" />
+        <option value="$PROJECT_DIR$/ExhibitionAreaFirstApp.csp" />
+        <option value="$PROJECT_DIR$/ExhibitionArea.csp" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/Stats.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GenerateLatex.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/FDRExperiment.java" />
       </list>
     </option>
   </component>
@@ -197,9 +211,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1236" />
     <option name="y" value="23" />
-    <option name="width" value="1324" />
+    <option name="width" value="2560" />
     <option name="height" value="1337" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -220,24 +233,6 @@
             <path>
               <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
               <item name="Experiment" type="462c0819:PsiDirectoryNode" />
-              <item name="Examples" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Experiment" type="462c0819:PsiDirectoryNode" />
-              <item name="Examples" type="462c0819:PsiDirectoryNode" />
-              <item name="ArtGallery" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Experiment" type="462c0819:PsiDirectoryNode" />
-              <item name="Examples" type="462c0819:PsiDirectoryNode" />
-              <item name="ArtGallery" type="462c0819:PsiDirectoryNode" />
-              <item name="ExhibitionArea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Experiment" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -253,6 +248,27 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Experiment" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Experiment" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Experiment" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="generated-sources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Experiment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -267,21 +283,23 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547912246301" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548064150697" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15213358" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Examples" />
       <recent name="$PROJECT_DIR$/Examples/Stadium" />
       <recent name="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea" />
     </key>
@@ -298,7 +316,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Experiment" />
@@ -307,9 +325,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All Features in: Experiment" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="3" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="Experiment" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm3SMFormatter" />
+      <option name="SUGGESTED_NAME" value="All Features in: Experiment" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Cucumber java.All Features in: Experiment" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Cucumber java.All Features in: Experiment" />
       </list>
     </recent_temporary>
   </component>
@@ -327,11 +367,31 @@
       <workItem from="1547837622172" duration="10751000" />
       <workItem from="1547894823863" duration="854000" />
       <workItem from="1547909967436" duration="2374000" />
+      <workItem from="1547971554683" duration="7300000" />
+      <workItem from="1547985455639" duration="5485000" />
+      <workItem from="1548002200537" duration="69000" />
+      <workItem from="1548005767944" duration="6356000" />
+      <workItem from="1548054021954" duration="125000" />
+      <workItem from="1548059799705" duration="2008000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="All_Features_in__Experiment - 2019.01.20 at 18h 40m 16s.xml">
+      <configuration name="All Features in: Experiment" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Features_in__Experiment - 2019.01.20 at 18h 41m 56s.xml">
+      <configuration name="All Features in: Experiment" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Features_in__Experiment - 2019.01.20 at 19h 12m 14s.xml">
+      <configuration name="All Features in: Experiment" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+    <history-entry file="All_Features_in__Experiment - 2019.01.20 at 19h 12m 50s.xml">
+      <configuration name="All Features in: Experiment" configurationId="CucumberJavaRunConfigurationType" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24892000" />
+    <option name="totallyTimeSpent" value="46235000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -343,9 +403,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1236" y="23" width="1324" height="1337" extended-state="0" />
+    <frame x="0" y="23" width="2560" height="1337" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33151326" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17712471" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -355,11 +415,11 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329927" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.19759037" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.48248175" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.6240964" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.329927" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32931727" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32931727" />
       <window_info anchor="bottom" id="Tool Output" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.329927" />
@@ -376,6 +436,38 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17474186" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329927" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.19759037" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.48433736" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32931727" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32931727" />
+      <window_info anchor="bottom" id="Tool Output" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.329927" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -383,15 +475,68 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/FDRExperiment.java</url>
+          <line>76</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/FDRExperiment.java</url>
+          <line>90</line>
+          <properties />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>file.getAbsolutePath()</expression-string>
+        <expression-string>source.split(&quot;\\n&quot;)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>file</expression-string>
+        <expression-string>new JSONObject(source).get(&quot;results&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new String(data, &quot;UTF-8&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data.toString()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new JSONObject(data.toString())</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new JSONObject(data)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new File(&quot;/Users/aimee/phd/dissertation/CSP Examples/Stadium&quot;).listFiles()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new File(&quot;/phd/dissertation/CSP Examples/Stadium&quot;).listFiles()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>new File(&quot;/phd/dissertation/CSP Examples/Stadium/&quot;).listFiles()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -402,55 +547,8 @@
     <entry file="file://$PROJECT_DIR$/LatexTemplatevalues.tex" />
     <entry file="file://$PROJECT_DIR$/LatexTemplate1.tex" />
     <entry file="file://$PROJECT_DIR$/LatexTemplate2.tex" />
-    <entry file="file://$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/ExhibitionArea.csp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/AssertionsF.csp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LatexTemplateArt.tex" />
-    <entry file="file://$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/Assertions.csp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Stats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LatexTemplateSt.tex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3075">
-          <caret line="205" column="11" selection-start-line="205" selection-start-column="11" selection-end-line="205" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GenerateLatex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/LatexTemplateSt.tex" />
     <entry file="file://$PROJECT_DIR$/LatexTemplate.tex">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -458,51 +556,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assertions.csp">
+    <entry file="file://$PROJECT_DIR$/LatexTemplateSectionSize1010100.tex" />
+    <entry file="file://$PROJECT_DIR$/LatexTemplateSectionSize_10_10_100.tex" />
+    <entry file="file://$PROJECT_DIR$/LatexTemplateSectionSize_20_20_10.tex" />
+    <entry file="file://$PROJECT_DIR$/LatexTemplateSectionSize_10_20_10.tex" />
+    <entry file="file://$PROJECT_DIR$/Section.csp" />
+    <entry file="file://$PROJECT_DIR$/assertions.csp" />
+    <entry file="file://$PROJECT_DIR$/Examples/StadiumDetOrder.csp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="694">
+          <caret line="477" lean-forward="true" selection-start-line="477" selection-end-line="477" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examples/StadiumOrder.csp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="458" column="50" selection-start-line="458" selection-start-column="50" selection-end-line="458" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stadium.csp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/RmA.csp" />
+    <entry file="file://$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/RmB.csp" />
+    <entry file="file://$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/RmD.csp" />
+    <entry file="file://$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/ExhibitionArea.csp" />
+    <entry file="file://$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/AssertionsF.csp" />
+    <entry file="file://$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea/Assertions.csp" />
+    <entry file="file://$PROJECT_DIR$/Examples/ExhibitionArea.csp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1010">
+          <caret line="200" column="19" selection-start-line="200" selection-start-column="19" selection-end-line="200" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Examples/ExhibitionAreaFirstApp.csp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="233" column="19" selection-start-line="233" selection-start-column="19" selection-end-line="233" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/Stats.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Stats.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StadiumSectionSize.csp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GenerateLatex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/FDRExperiment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+        <state relative-caret-position="675">
+          <caret line="45" column="59" lean-forward="true" selection-start-line="45" selection-start-column="59" selection-end-line="45" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StadiumSectionSize.csp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Section.csp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="441" selection-start-line="441" selection-end-line="441" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stadium.csp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -511,11 +648,20 @@
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
-          <artifact-editor />
+          <artifact-editor>
+            <show-content>
+              <type id="library" />
+              <type id="javaee-facet-resources" />
+              <type id="jpa-descriptors" />
+              <type id="artifact" />
+            </show-content>
+          </artifact-editor>
+          <last-edited>Experiment:jar2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -564,7 +710,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

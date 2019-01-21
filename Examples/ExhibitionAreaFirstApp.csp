@@ -1,0 +1,311 @@
+---------------------------------------------
+--		Event for EB
+---------------------------------------------
+EventsD = {goto.EB.ED,goto.ED.Corr}
+Monitors2 = {|emergency|}
+
+MonitorsD = union(Monitors5, {x | x <- Monitors2, approachOne})
+
+---------------------------------------------
+--		Processes for ED
+---------------------------------------------
+
+D0 = (goto!ED!Corr -> D0) [] (goto!EB!ED -> D0)
+D1 = goto!ED!Corr -> D1
+
+---------------------------------------------
+--		Behaviour for ED
+---------------------------------------------
+
+BehaviourD = let D(n) =  (n > 0 & goto!ED!Corr -> D(n-1))
+					[] (n <= MaxAgentsEA & goto!EB!ED -> D(n+1))
+				within D(0)
+
+---------------------------------------------
+--		Requirements for ED
+---------------------------------------------
+
+Pattern2 = let P(n) =
+				   (goto!ED!Corr -> if n==MaxAgents then adapt!n-1 -> ack -> P(n-1) else if n > 0 then P(n-1) else P(0))
+				[] (goto!EB!ED -> if n >= MaxAgents - 1 then adapt!MaxAgents -> ack -> P(MaxAgents) else P(n+1))
+				[] (emergency -> RUN(union(EventsD,Monitors2)))
+		within P(0)
+Pi2 =  adapt?v  ->  if v == MaxAgents then r!0 -> ack -> Pi2 else r!1 -> ack -> Pi2
+
+
+Pattern5D = (emergency -> adaptE -> ack -> Pattern5D) [] (goto?_: {x | goto.x <- EventsD} -> Pattern5D)
+Pi5D =  adaptE  ->  r!1 -> ack -> Pi5D
+
+---------------------------------------------
+--		Adaptatable Process
+---------------------------------------------
+
+SysD =
+		let
+			map = \ id @ (if id == 0 then D1
+						 else if id == 1 then D0
+						 else SKIP)
+			SysDRec = (r?id : Processes -> (map(id) /\ SysDRec))
+		within
+			D0 /\ SysDRec
+
+---------------------------------------------
+--		Composition
+---------------------------------------------
+
+RmD = let
+		eventsR2 = union(EventsD,Monitors2)
+		eventsR5 = union(EventsD,Monitors5)
+
+		events = union(eventsR2,eventsR5)
+		R2 = (Pattern2 [|{|adapt,ack|}|] Pi2) \ {|adapt,ack|}
+		R5 = (Pattern5D [|{|adaptE,ack|}|] Pi5D) \ {|adaptE,ack|}
+
+		FirstApproach = BehaviourD [|inter(EventsD,events)|] (R2  [|inter(eventsR2,eventsR5)|] R5)
+		SecondApproach = BehaviourD [|inter(EventsD,eventsR5)|] R5
+
+		proc = (SysD [| union(EventsD,{| r |}) |] (if(approachOne) then FirstApproach else SecondApproach)) \ {| r |}
+	within
+		normal(proc)
+
+
+---------------------------------------------
+--		Events for EB
+---------------------------------------------
+EventsB = {goto.EB.EA,goto.EB.ED,goto.EA.EB}
+Monitors2B = union(EventsD,Monitors5)
+
+MonitorsB = union({x | x<- Monitors2B, not approachOne}, Monitors5)
+
+---------------------------------------------
+--		Processes for EB
+---------------------------------------------
+B0 = (goto!EB?_:{EA,ED} -> B0) [] (goto!EA!EB -> B0)
+B1 = (goto!EB?_:{EA,ED} -> B1)
+
+---------------------------------------------
+--		Behaviour for EB
+---------------------------------------------
+BehaviourB = let B(n) =  (n > 0 & goto!EB?_:{EA,ED} -> B(n-1))
+					[] (n <= MaxAgentsEA & goto!EA!EB -> B(n+1))
+				within B(0)
+
+---------------------------------------------
+--		Requirement for EB
+---------------------------------------------
+Pattern2B = let P(n) =
+		   	   		(goto!EB!EA -> if(n == MaxAgentsPair) then adapt!n-1 -> ack -> P(n-1) else if(n > 0) then P(n-1) else P(0))
+		   	 	[] (goto!EA!EB -> if(n >= MaxAgentsPair-1) then adapt!n+1 -> ack -> P(MaxAgentsPair) else P(n+1))
+				[] (goto!ED!Corr -> if(n == MaxAgentsPair) then adapt!n-1 -> ack -> P(n-1) else if (n >0) then P(n-1) else P(0))
+				[] (goto!EB!ED -> P(n))
+				[] (emergency -> RUN(union(EventsB,Monitors2B)))
+			within P(0)
+Pi2B =  adapt?v  ->  if v == MaxAgentsPair then r!0 -> ack -> Pi2B else r!1 -> ack -> Pi2B
+
+
+Pattern5B = (emergency -> adaptE -> ack -> Pattern5B) [] (goto?_: {x | goto.x <- EventsB} -> Pattern5B)
+PiEmergencyB =  adaptE  ->  r!1 -> ack -> PiEmergencyB
+
+---------------------------------------------
+--		Adaptatable Process
+---------------------------------------------
+SysB =
+		let
+			map = \ id @ (if id == 0 then B1
+						 else if id == 1 then B0
+						 else SKIP)
+			StateRec = (r?id : Processes -> (map(id) /\ StateRec))
+		within
+			B0 /\ StateRec
+
+---------------------------------------------
+--		Composition
+---------------------------------------------
+RmB = let
+			eventsR2B = union(EventsB,Monitors2B)
+			eventsR5 = union(EventsB,Monitors5)
+
+			events = Union({eventsR2B,eventsR5})
+			R5 = (PiEmergencyB [|{|adaptE,ack|}|] Pattern5B)  \ {|adaptE,ack|}
+			R2B = (Pi2B [|{|adapt,ack|}|] Pattern2B) \ {|adapt,ack|}
+
+			FirstApproach = R5 [| inter(EventsB,eventsR5) |] BehaviourB
+			SecondApproach = BehaviourB [|inter(EventsB, events) |] (R5 [| inter(eventsR5,eventsR2B) |] R2B)
+
+			proc = (SysB [| union(EventsB,{|r|}) |] (if(approachOne) then FirstApproach else SecondApproach)) \ {| r |}
+		within
+			normal(proc)
+
+EventsA = {goto.EB.EA,goto.EA.Corr,goto.EA.EB,goto.Corr.EA}
+
+Monitors4 = union(EventsD,Monitors5)
+Monitors2A = union(EventsB,Monitors5)
+Monitors5 = {emergency}
+
+MonitorsA = Union({Monitors5,Monitors4, {x | x <- Monitors2A, not approachOne}})
+---------------------------------------------
+--		Processes for EA
+---------------------------------------------
+A0 = (goto!EB!EA -> A0) [] (goto!EA?_:{Corr,EB} -> A0) [] (goto!Corr!EA -> A0)
+A1 = (goto!EB!EA -> A1) [] (goto!EA?_:{Corr,EB} -> A1)
+
+---------------------------------------------
+--		Behaviour for EA
+---------------------------------------------
+BehaviourA =  let B(n) = (n <= MaxAgentsEA & goto!Corr!EA -> B(n+1))
+							[] (n > 0 & goto!EA!Corr -> B(n-1))
+							[] (n > 0 & goto!EA!EB -> B(n-1))
+							[] (n <= MaxAgentsEA & goto!EB!EA -> B(n+1))
+				within B(0)
+
+---------------------------------------------
+--		Requirements for EA
+---------------------------------------------
+Pattern4 =
+		let P(n) =  (goto?_:{EA,ED}!Corr -> if(n >= MaxAgentsEA) then adapt!n-1 -> ack-> P(n-1) else if (n > 0) then P(n-1) else P(0))
+				[] (goto!Corr!EA -> if(n >= MaxAgentsEA - 1) then adapt!MaxAgentsEA -> ack -> P(MaxAgentsEA) else P(n+1))
+				[] (goto!EA!EB -> P(n))
+				[] (goto!EB!EA -> P(n))
+				[] (goto!EB!ED -> P(n))
+				[] (emergency -> RUN(union(EventsA,Monitors4)))
+
+		within P(0)
+Pi4 =  adapt?v  ->  if v >= MaxAgentsEA then r!1 -> ack -> Pi4 else r!0 -> ack -> Pi4
+
+Pattern2A = let P(n) =  (goto!Corr!EA -> if(n >= MaxAgentsPair - 1) then adapt!MaxAgentsPair -> ack -> P(MaxAgentsPair) else P(n+1))
+					[] (goto!EA!Corr -> if(n >= MaxAgentsPair) then adapt!n-1 -> ack -> P(n-1) else if (n > 0) then P(n-1) else P(0))
+					[] (goto!EB!ED   -> if(n >= MaxAgentsPair) then adapt!n-1 -> ack -> P(n-1) else if (n > 0) then P(n-1) else P(0))
+					[] (goto!EA!EB -> P(n))
+					[] (goto!EB!EA -> P(n))
+					[] (emergency -> RUN(union(EventsA,Monitors2A)))
+			within P(0)
+Pi2A =  adapt?v  ->  if v >= MaxAgentsPair then r!1 -> ack -> Pi2A else r!0 -> ack -> Pi2A
+
+
+Pattern5A = (emergency -> adaptE -> ack -> Pattern5A) [] (goto?_: {x | goto.x <- EventsA} -> Pattern5A)
+PiEmergencyA =  adaptE  ->  r!0 -> ack -> PiEmergencyA
+
+---------------------------------------------
+--		Adaptatable Processes
+---------------------------------------------
+SysA =
+		let
+			map = \ id @ (if id == 0 then A0
+						 else if id == 1 then A1
+						 else SKIP)
+			StateRec = (r?id : Processes -> (map(id) /\ StateRec))
+		within
+			A0 /\ StateRec
+
+---------------------------------------------
+--		Composition
+---------------------------------------------
+RmA = let
+			eventsR2A = union(EventsA,Monitors2A)
+			eventsR4 = union(EventsA,Monitors4)
+			eventsR5 = union(EventsA,Monitors5)
+
+
+			R4 = (Pi4 [|{|adapt,ack|}|] Pattern4) \ {|adapt,ack|}
+			R2A = (Pi2A [|{|adapt,ack|}|] Pattern2A) \ {|adapt,ack|}
+			R5 = (PiEmergencyA [|{|adaptE,ack|}|] Pattern5A) \ {|adaptE,ack|}
+
+			FirstApproach = (R4 [|inter(eventsR4,eventsR5) |] R5)  [|inter(EventsA,Union({eventsR4,eventsR5}))|] BehaviourA
+			SecondApproach =  (R2A [|inter(eventsR2A,eventsR5) |] R5) [|inter(EventsA,Union({eventsR2A,eventsR5}))|] BehaviourA
+
+			proc = (SysA[| union(EventsA, {| r |}) |] (if(approachOne) then FirstApproach else SecondApproach)) \ {| r |}
+		within
+			normal(proc)
+--------- The people in the building should be able to reach the nearest emergency exit (With no composition) ----------
+approachOne = True
+
+assert Requirement5D [F=  RmD
+assert Requirement5B [F=  RmB
+assert Requirement5A [F=  RmA
+
+---------------------------------------------
+--	 Requirement 2 (First Approach)
+---------------------------------------------
+
+assert Requirement2 [T= RmD
+assert (Requirement2 [| event("D","B") |] RmB)  [T= RoomBD
+assert (Requirement2 [| event("D", "AB") |] RoomAB)  [T= ExhibitionArea
+
+---------------------------------------------
+--	 Requirement 4 (First Approach)
+---------------------------------------------
+
+assert Requirement4 [T= ExhibitionArea
+
+assert Requirement5A [|event("A","B") |] RmB [F=  (RmA /\ (emergency -> (BehaviourA ||| RUN({emergency}))))	 [|event("A","B") |] RmB
+assert Requirement5A [|event("A","BD") |] RoomBD [F=  (RmA /\ (emergency -> (BehaviourA ||| RUN({emergency}))))	 [|event("A","BD") |] RoomBD
+
+
+transparent normal
+
+datatype Room = EA | EB | ED | Corr 
+
+Processes = {0..1}
+MaxAgents = |VISITORS|
+MaxAgentsEA = MaxAgents*2
+MaxAgentsPair = MaxAgents
+EmergencyCount = 2
+
+notR(rm) = {x | x<- Room, x != rm}
+
+---------------------------------------------
+--		Events
+---------------------------------------------
+channel adapt : {0..MaxAgentsEA}
+channel adaptE
+channel emergency 				-- local state (True over MaxAgents, False under MaxAgents)
+channel goto : Room.Room			-- agents' movement
+
+channel r : Processes		-- locations for rooms
+channel ack
+
+
+
+event(x,t)= Union({inter(E(x), M(t)), inter(E(t),M(x)),inter(E(t),E(x)), inter(M(t),M(x))})
+E("") = {}
+E(<x>^xs) = if x == 'A' then union(EventsA,E(xs)) else if x == 'B' then union(EventsB,E(xs)) else if x == 'D' then union(EventsD,E(xs)) else {}
+M("") = {}
+M(<x>^xs) = if x == 'A' then union(MonitorsA,M(xs)) else if x == 'B' then union(MonitorsB,M(xs)) else if x == 'D' then union(MonitorsD,M(xs)) else {}
+
+RoomAB = normal(RmA [| event("A","B") |] RmB)
+RoomBD = normal(RmD [| event("D","B") |] RmB)
+
+ExhibitionArea = normal(RoomAB [| event("AB","D") |] RmD)
+
+
+
+---------------------------------------------
+--		Requirements Assertions
+---------------------------------------------
+
+---------- at most MaxAgents people in room D ---------- 
+Requirement2 = let T(n) =   (n < MaxAgents & goto!EB!ED  -> T(n+1)) 
+								[] (n > 0  & goto!ED!Corr -> T(n-1))
+								[] (emergency -> RUN(union(EventsD,MonitorsD)))
+				within T(0)
+
+---------- at most MaxAgentsEA people in the Exhibition Area ----------  
+Requirement4 = let T(n) =   (n < MaxAgentsEA & goto!Corr!EA  -> T(n+1)) 
+							[] (n >= 0  & goto?_:{EA,ED}!Corr -> T(n-1))
+							[] (goto?_:{EA.EB,EB.EA,EB.ED} -> T(n))
+							[] (emergency -> RUN(Union({MonitorsA,MonitorsB,MonitorsD,EventsA,EventsB,EventsD})))
+			within T(0)
+
+---------- Logical Movement through Exhibition Area ---------- 
+Movement = let M(a,b,d) = (a > 0 and b <= MaxAgentsEA & goto!EA!EB -> M(a-1,b+1,d)) 
+							[] (b > 0 and a <= MaxAgentsEA & goto!EB!EA -> M(a+1,b-1,d))
+							[] (b > 0 and d <= MaxAgentsEA & goto!EB!ED -> M(a,b-1,d+1)) 
+							[] (d > 0 & goto!ED!Corr -> M(a,b,d-1)) 
+							[] (a > 0 & goto!EA!Corr -> M(a-1,b,d)) 
+							[] (a <= MaxAgentsEA & goto!Corr!EA -> M(a+1,b,d)) 
+			within M(0,0,0)
+
+Requirement5D =  RmD /+EventsD+\ (BehaviourD |||  RUN({emergency}))
+Requirement5B =  RmB /\ (emergency -> RUN(union(EventsB,{emergency})))
+Requirement5A =  RmA /\ (emergency -> (BehaviourA ||| RUN({emergency})))	
+

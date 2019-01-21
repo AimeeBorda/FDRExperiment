@@ -1,111 +1,95 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
-import uk.ac.ox.cs.fdr.Assertion;
-import uk.ac.ox.cs.fdr.AssertionList;
-import uk.ac.ox.cs.fdr.Session;
-import uk.ac.ox.cs.fdr.fdr;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 class FDRExperiment {
 
-    HashMap hashMap;
-    String fileName;
-    int interval;
-    int max;
-    int min;
-    String placeholder;
-
-    LinkedHashMap<Integer, Stats> statistics = new LinkedHashMap<>();
+    LinkedHashMap<String, Stats> statistics = new LinkedHashMap<>();
     ArrayList<String> legends = new ArrayList<>();
 
-    public FDRExperiment(int interval, int max, int min, String placeholder, String fileName,  HashMap hashMap) {
-        this.interval = interval;
-        this.max = max;
-        this.min = min;
-        this.placeholder = placeholder;
-        this.fileName = fileName;
-        this.hashMap = hashMap;
-    }
+    public FDRExperiment() throws IOException {
 
-    public void getData() throws IOException, InterruptedException {
+        File[] listOfFiles = new File("/Users/aimee/phd/dissertation/CSP Examples/Stadium").listFiles();
+        for (File file : listOfFiles) {
 
-        for (int i = this.min; i <= this.max; i += this.interval) {
-            System.out.print("Started by api "+i+" for "+placeholder) ;
-            this.hashMap.put(this.placeholder, String.valueOf(i));
-            File file = modifyFile(this.fileName, this.placeholder, this.hashMap);
-
-            if (i == this.min) {
-                generateLegends(file);
+            if (file.getName().startsWith("someFile") && file.getName().endsWith(".json")) {
+                parseJSON(file);
+            } else if (file.getName().startsWith("otherFile") && file.getName().endsWith(".txt")) {
+                parseTXT(file);
             }
-            Stats s = byAPI(file);
-            System.out.println(" now moved on to command line") ;
-            byCommandLine(file, s);
-            statistics.put(i, s);
-
-            file.delete();
         }
 
         HashMap<String, String> map = GenerateLatex.createLatexFile(legends, statistics);
-        modifyFile("LatexTemplate.tex", this.placeholder + this.min + this.max+this.interval, map);
-
+        modifyFile("/Users/aimee/phd/dissertation/CSP Examples/Stadium/LatexTemplate.s", "R", map);
     }
 
-    private void generateLegends(File file) {
-        Session session = new Session();
-        session.loadFile(file.getName());
+    private void parseTXT(File listOfFile) throws IOException {
+        FileInputStream fis = new FileInputStream(listOfFile);
+        byte[] data = new byte[(int) listOfFile.length()];
+        fis.read(data);
+        fis.close();
 
-        for (Assertion assertion : session.assertions())
-            legends.add(assertion.toString().substring(0,assertion.toString().indexOf("[") - 1 ));
-
-    }
-
-    private void byCommandLine(File file, Stats s) throws IOException, InterruptedException {
-
-        Process p = Runtime.getRuntime().exec(new String[]{"bash", "-c", "/Applications/FDR4.app/Contents/MacOS/refines \"" + file.getAbsolutePath() + "\" --format=json"});
-        p.waitFor();
-
-        BufferedReader b = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        JSONObject jsonObj = new JSONObject(b.readLine());
-        Iterator<Object> results = ((JSONArray) jsonObj.get("results")).iterator();
-
-        while (results.hasNext()) {
-            JSONObject next = (JSONObject) results.next();
-            s.transitions.add(next.getDouble("visited_transitions"));
-            s.states.add(next.getDouble("visited_states"));
-            s.plys.add(next.getDouble("visited_plys"));
+        String someFile = listOfFile.getName().replace("otherFile", "").replace(".txt", "");
+        Stats s = new Stats();
+        if (this.statistics.containsKey(someFile))
+            s = this.statistics.get(someFile);
+        else {
+            statistics.put(someFile, s);
         }
-        b.close();
+
+        for (String str : new String(data, "UTF-8").split("Finished")) {
+            if(str.contains(" in ")) {
+                double execTime = Double.parseDouble(str.substring(str.lastIndexOf("in ") + 3, str.lastIndexOf("seconds")).trim());
+                s.compileTime.add(execTime);
+            }
+        }
     }
 
-    private Stats byAPI(File file) {
+    private void parseJSON(File listOfFile) throws IOException {
+        FileInputStream fis = new FileInputStream(listOfFile);
+        byte[] data = new byte[(int) listOfFile.length()];
+        fis.read(data);
+        fis.close();
+
+        String someFile = listOfFile.getName().replace("someFile", "").replace(".json", "");
 
         Stats s = new Stats();
-        Session session = new Session();
-        session.loadFile(file.getName());
-
-
-        AssertionList assertions = session.assertions();
-        s.initializeLists(assertions.size());
-
-        for (Assertion assertion : assertions) {
-
-            double time = System.nanoTime();
-            assertion.execute(null);
-            time = (System.nanoTime() - time) / 1000000.0;
-
-            s.compileTime.add(time);
+        if (statistics.containsKey(someFile)) {
+            s = statistics.get(someFile);
+        }else {
+            statistics.put(someFile, s);
         }
 
-        fdr.libraryExit();
+        boolean setLegends = legends.isEmpty();
+        for(String result : new String(data, "UTF-8").split("\\n")) {
 
-        return s;
+                JSONObject next = ((JSONArray) new JSONObject(result).get("results")).getJSONObject(0);
+                s.transitions.add(next.getDouble("visited_transitions"));
+                s.states.add(next.getDouble("visited_states"));
+                s.plys.add(next.getDouble("visited_plys"));
+
+                if (setLegends) {
+                    legends.add(formatLegend(next.getString("assertion_string")));
+                }
+            }
+
     }
 
-    private File modifyFile(String filePath, String prefix, HashMap<String, String> def) throws IOException {
+    private String formatLegend(String legend){
+        if(legend.contains("[T=")|| legend.contains("[F=") || legend.contains("[FD=")){
+            return legend.substring(0,legend.indexOf("["));
+        }else{
+            return legend.substring(legend.indexOf("[")+1, legend.lastIndexOf("]"));
+        }
+    }
+
+    private void modifyFile(String filePath, String prefix, HashMap<String, String> def) throws IOException {
         File fileToBeModified = new File(filePath);
-        String fileName = fileToBeModified.getName().replace(".", prefix + ".");
+        String fileName = fileToBeModified.getAbsolutePath().replace(".s", prefix + ".tex");
         String oldContent = "";
         BufferedReader reader = null;
         FileWriter writer = null;
@@ -128,9 +112,5 @@ class FDRExperiment {
         reader.close();
 
         writer.close();
-
-
-        return new File(fileName);
     }
-
 }

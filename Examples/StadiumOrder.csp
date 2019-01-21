@@ -10,8 +10,8 @@ subtype SectionID = H.{0..NumSections} | L.{0..NumSections} | VIP.{0..NumSection
 subtype Agent = VIP.{0..NumSections} | H.{0..NumSections} | L.{0..NumSections}  | Emp
 
 
-NumSections = 35
-SectionSize = 100
+NumSections = |NUMSECTIONS|
+SectionSize = |SECTIONSIZE|
 ---------------------------------------------
 --		First-order events
 ---------------------------------------------
@@ -479,12 +479,18 @@ ReqG = 	let
 ---------------------------------------------
 --		Verification for Requirements
 ---------------------------------------------
-assert Section :[deterministic]
+assert ReqA [T= Section
+assert ReqB [T= Section
+assert ReqC [T= Section
 assert ReqD [T= Section
 assert ReqE [T= Section
-assert ReqC [T= Section
-
-assert ReqB [T= Section
-assert ReqG [T= Section
 assert ReqF [T= Section
-assert ReqA [T= Section
+assert ReqG [T= Section
+assert Section :[deterministic]
+
+
+
+
+
+
+

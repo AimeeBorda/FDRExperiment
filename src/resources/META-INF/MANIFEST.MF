@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Class-Path: json-20180813.jar fdr.jar org.json-ld-2.6.3.jar ec.base-2.
+ 6.3.jar html-5.0.bv6.jar shared-3.3.0.jar client-runtime-3.3.0.jar jq
+ uery-1.11.3.bv1.jar jquery-1.11.3.jar
+Main-Class: Main
+

@@ -9,16 +9,16 @@ import java.util.stream.IntStream;
 public class GenerateLatex {
 
     private final static String[] colors = {"red", "blue", "green", "yellow", "purple", "orange", "black", "brown", "gray", "awesome", "cyan", "azure", "bazaar", "blue-green", "brightube"};
-    private static DecimalFormat df2 = new DecimalFormat(".##");
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
 
-    public static HashMap<String, String> createLatexFile(List<String> legends, LinkedHashMap<Integer, Stats> statistics) {
+    public static HashMap<String, String> createLatexFile(List<String> legends, LinkedHashMap<String, Stats> statistics) {
         HashMap<String, String> result = createGraph(legends, statistics);
         result.putAll(createTable(legends,statistics));
 
         return result;
     }
 
-    private static HashMap<String, String> createGraph(List<String> legends, LinkedHashMap<Integer, Stats> statistics) {
+    private static HashMap<String, String> createGraph(List<String> legends, LinkedHashMap<String, Stats> statistics) {
         StringBuilder resCompileTime = new StringBuilder();
         StringBuilder resStates = new StringBuilder();
         StringBuilder resTransition = new StringBuilder();
@@ -31,7 +31,7 @@ public class GenerateLatex {
             resTransition.append("\\addplot[color=" + colors[i] + ",mark=x] coordinates {\n");
             resPlys.append("\\addplot[color=" + colors[i] + ",mark=x] coordinates {\n");
 
-            for (Map.Entry<Integer, Stats> s : statistics.entrySet()) {
+            for (Map.Entry<String, Stats> s : statistics.entrySet()) {
                 resCompileTime.append("(" + s.getKey() + "," + s.getValue().compileTime.get(i) + ")\n");
                 resStates.append("(" + s.getKey() + "," + s.getValue().states.get(i) + ")\n");
                 resTransition.append("(" + s.getKey() + "," + s.getValue().transitions.get(i) + ")\n");
@@ -51,17 +51,17 @@ public class GenerateLatex {
         }};
     }
 
-    private static HashMap<String, String> createTable(List<String> legends, LinkedHashMap<Integer, Stats> statistics) {
+    private static HashMap<String, String> createTable(List<String> legends, LinkedHashMap<String, Stats> statistics) {
         StringBuilder table = new StringBuilder();
 
         table.append("& & " + legends.stream().collect(Collectors.joining("&")) +"\\\\ \\hline \n");
 
-        for(Map.Entry<Integer,Stats> row : statistics.entrySet()){
+        for(Map.Entry<String,Stats> row : statistics.entrySet()){
             Stats s = row.getValue();
-            table.append("\\multirow{4}{*}{"+ row.getKey()+"} & States & " + s.states.stream().map(df2::format).collect(Collectors.joining("&"))+ "\\\\[1mm]   \\cline{2-"+(legends.size() + 2)  +"} \n ");
-            table.append("& Transitions &" + s.transitions.stream().map(df2::format).collect(Collectors.joining("&"))+ "\\\\[1mm]  \\cline{2-"+(legends.size() + 2) +"} \n ");
-            table.append(" & Plys & " + s.plys.stream().map(df2::format).collect(Collectors.joining("&"))+ "\\\\[1mm]  \\cline{2-"+(legends.size() + 2)  +"} \n ");
-            table.append(" & Time &" + s.compileTime.stream().map(df2::format).collect(Collectors.joining("&"))+ "\\\\[1mm] \\hline \n");
+            table.append("\\multirow{4}{*}{"+ row.getKey()+"} & States & " + s.states.stream().map(df2::format).collect(Collectors.joining(" & "))+ " \\\\[1mm]   \\cline{2-"+(legends.size() + 2)  +"} \n ");
+            table.append("& Transitions &" + s.transitions.stream().map(df2::format).collect(Collectors.joining(" & "))+ " \\\\[1mm]  \\cline{2-"+(legends.size() + 2) +"} \n ");
+            table.append(" & Plys & " + s.plys.stream().map(df2::format).collect(Collectors.joining(" & "))+ " \\\\[1mm]  \\cline{2-"+(legends.size() + 2)  +"} \n ");
+            table.append(" & Time (sec) &" + s.compileTime.stream().map(df2::format).collect(Collectors.joining(" & "))+ " \\\\[1mm] \\hline \n");
         }
 
 

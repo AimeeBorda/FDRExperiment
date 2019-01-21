@@ -1,3 +1,32 @@
+---------------------------------------------
+--		Data Definitions
+---------------------------------------------
+transparent normal
+
+datatype State = Before | During | After
+datatype IDS = H.{0..NumSections} | L.{0..NumSections} | VIP.{0..NumSections} | Corr  | Emp
+
+subtype SectionID = H.{0..NumSections} | L.{0..NumSections} | VIP.{0..NumSections}  | Corr
+subtype Agent = VIP.{0..NumSections} | H.{0..NumSections} | L.{0..NumSections}  | Emp
+
+
+NumSections = |NUMSECTIONS|
+SectionSize = |SECTIONSIZE|
+---------------------------------------------
+--		First-order events
+---------------------------------------------
+
+channel goto : Agent.SectionID.SectionID
+channel event : State
+channel alarm
+channel wind
+channel noisy
+channel open : SectionID.SectionID
+channel empty 
+
+---------------------------------------------
+--		Encoding
+---------------------------------------------
  ---------------------------------------------
 --		Adaptation Events
 ---------------------------------------------
@@ -25,7 +54,7 @@ prev(_) = Corr
 notE = {x | x <- Agent, x != Emp}
 
 adj = {next(s),prev(s),Corr}
-sections = {y.z | y <- union({s},adj), z <- union({s},adj), y!=z,z == s or y ==s } 
+sections = {y.z | y <- union({s},adj), z <- union({s},adj), y!=z,z == s or y ==s }
 
 openEvt = {x.y | x <- SectionID, y <- SectionID, x == s or y ==s, x!=Corr, y != Corr}
 monEvents = {| noisy,event,wind ,alarm |}
@@ -44,7 +73,7 @@ Behaviour(n) = (n > 0 & goto?_:{x | x<- Agent, x!= Emp}!s?_: adj -> Behaviour(n-
 
 
 SOpen = goto?_:{s,Emp}?_:adj!s -> SOpen [] goto?_:{s,Emp}!s?_ :adj -> SOpen
-SExitAdj = goto!Emp?_:sections ->  SExit [] goto?_!s!Corra -> SExit [] goto?_?_:{next(s), prev(s)}!s -> SExit
+SExitAdj = goto!Emp?_:sections ->  SExit [] goto?_!s!Corr -> SExit [] goto?_?_:{next(s), prev(s)}!s -> SExit
 SRoaming = goto?_?_:adj!s -> SRoaming	[] goto?_!s?_: adj -> SRoaming
 SExit = goto!Emp?_:sections ->  SExit [] goto?_!s!Corr -> SExit
 
@@ -233,7 +262,7 @@ AccessController = let
 EventStatus = event!Before -> event!During -> event!After -> EventStatus
 
 
-Section = (AccessController [|{|event|}|] EventStatus)
+Section =  normal(AccessController [|{|event|}|] EventStatus)
 
 ---------------------------------------------
 --		Req. 1: enter on ticket type
@@ -433,9 +462,37 @@ ReqG = 	let
 				[] (noisy -> A(other,emp,opn))
 				[] (wind -> A(other or member(s, {|H|}),emp,opn))
 				[] (alarm -> A(True,emp,opn))
-				[] (empty -> A(other,True,opn)) 
-				
-				[] (open?_ :{x.y | x.y <- openEvt,y != s} -> A(other,emp,opn)) 				
-				[] (other or emp & open?_ :{x.y | x.y <- openEvt,y == s} -> A(other,emp,True)) 
-		within 
+				[] (empty -> A(other,True,opn))
+
+				[] (open?_ :{x.y | x.y <- openEvt,y != s} -> A(other,emp,opn))
+				[] (other or emp & open?_ :{x.y | x.y <- openEvt,y == s} -> A(other,emp,True))
+		within
 			B(False,True,False)
+
+
+
+
+---------------------------------------------
+--		Assertions
+---------------------------------------------
+
+---------------------------------------------
+--		Verification for Requirements
+---------------------------------------------
+assert Section :[deterministic]
+
+assert ReqA [T= Section
+assert ReqB [T= Section
+assert ReqC [T= Section
+assert ReqD [T= Section
+assert ReqE [T= Section
+assert ReqF [T= Section
+assert ReqG [T= Section
+
+
+
+
+
+
+
+

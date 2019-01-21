@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact build-on-make="true" name="Experiment:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Experiment_jar</output-path>
+    <root id="root">
+      <element id="archive" name="Experiment.jar">
+        <element id="module-output" name="Experiment" />
+      </element>
+      <element id="library" level="project" name="Maven: org.json:json:20180813" />
+      <element id="library" level="project" name="com.eduworks:org.json-ld:2.6.3" />
+      <element id="library" level="project" name="fdr" />
+    </root>
+  </artifact>
+</component>
