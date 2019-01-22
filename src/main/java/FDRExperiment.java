@@ -2,14 +2,14 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.TreeMap;
+
+//import org.json.JSONObject;
 
 class FDRExperiment {
 
-    LinkedHashMap<String, Stats> statistics = new LinkedHashMap<>();
-    ArrayList<String> legends = new ArrayList<>();
+    TreeMap<String, Stats> statistics = new TreeMap<>();
 
     public FDRExperiment() throws IOException {
 
@@ -23,7 +23,7 @@ class FDRExperiment {
             }
         }
 
-        HashMap<String, String> map = GenerateLatex.createLatexFile(legends, statistics);
+        HashMap<String, String> map = GenerateLatex.createLatexFile(statistics);
         modifyFile("/Users/aimee/phd/dissertation/CSP Examples/Stadium/LatexTemplate.s", "R", map);
     }
 
@@ -33,20 +33,24 @@ class FDRExperiment {
         fis.read(data);
         fis.close();
 
+        String regex = "(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)";
         String someFile = listOfFile.getName().replace("otherFile", "").replace(".txt", "");
-        Stats s = new Stats();
-        if (this.statistics.containsKey(someFile))
-            s = this.statistics.get(someFile);
-        else {
-            statistics.put(someFile, s);
-        }
+        someFile = someFile.replaceAll("(?<=[A-Z])(?=[A-Z])|(?<=[a-z])(?=[A-Z])|(?<=\\D)$", "1");
+        String[] atoms = someFile.split(regex);
+        String size = atoms[0];
+        String req = atoms[1];
 
-        for (String str : new String(data, "UTF-8").split("Finished")) {
-            if(str.contains(" in ")) {
-                double execTime = Double.parseDouble(str.substring(str.lastIndexOf("in ") + 3, str.lastIndexOf("seconds")).trim());
-                s.compileTime.add(execTime);
-            }
+        Stats s = new Stats();
+        if (this.statistics.containsKey(size))
+            s = this.statistics.get(size);
+        else {
+            statistics.put(size, s);
         }
+        String str = new String(data, "UTF-8");
+        str = str.substring(str.indexOf("user") + 4, str.indexOf("sys")).trim();
+        String[] time = str.split("[ms]");
+        double execTime = Integer.parseInt(time[0])*60 + Double.parseDouble(time[1]);
+        s.compileTime.put(req, execTime);
     }
 
     private void parseJSON(File listOfFile) throws IOException {
@@ -55,37 +59,28 @@ class FDRExperiment {
         fis.read(data);
         fis.close();
 
+
+        String regex = "(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)";
         String someFile = listOfFile.getName().replace("someFile", "").replace(".json", "");
-
+        someFile = someFile.replaceAll("(?<=[A-Z])(?=[A-Z])|(?<=[a-z])(?=[A-Z])|(?<=\\D)$", "1");
+        String[] atoms = someFile.split(regex);
+        String size = atoms[0];
+        String req = atoms[1];
         Stats s = new Stats();
-        if (statistics.containsKey(someFile)) {
-            s = statistics.get(someFile);
-        }else {
-            statistics.put(someFile, s);
+        if (statistics.containsKey(size)) {
+            s = statistics.get(size);
+        } else {
+            statistics.put(size, s);
         }
 
-        boolean setLegends = legends.isEmpty();
-        for(String result : new String(data, "UTF-8").split("\\n")) {
-
-                JSONObject next = ((JSONArray) new JSONObject(result).get("results")).getJSONObject(0);
-                s.transitions.add(next.getDouble("visited_transitions"));
-                s.states.add(next.getDouble("visited_states"));
-                s.plys.add(next.getDouble("visited_plys"));
-
-                if (setLegends) {
-                    legends.add(formatLegend(next.getString("assertion_string")));
-                }
-            }
+        String source = new String(data, "UTF-8");
+        JSONObject next = ((JSONArray) new JSONObject(source).get("results")).getJSONObject(0);
+        s.transitions.put(req, next.getDouble("visited_transitions"));
+        s.states.put(req, next.getDouble("visited_states"));
+        s.plys.put(req, next.getDouble("visited_plys"));
 
     }
 
-    private String formatLegend(String legend){
-        if(legend.contains("[T=")|| legend.contains("[F=") || legend.contains("[FD=")){
-            return legend.substring(0,legend.indexOf("["));
-        }else{
-            return legend.substring(legend.indexOf("[")+1, legend.lastIndexOf("]"));
-        }
-    }
 
     private void modifyFile(String filePath, String prefix, HashMap<String, String> def) throws IOException {
         File fileToBeModified = new File(filePath);
