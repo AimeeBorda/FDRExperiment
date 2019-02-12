@@ -8,15 +8,15 @@ public class GenerateLatex {
     private final static String[] colors = {"red", "blue", "green", "yellow", "purple", "orange", "black", "brown", "gray", "awesome", "cyan", "azure", "bazaar", "blue-green", "brightube"};
     private static DecimalFormat df2 = new DecimalFormat("#.##");
 
-    public static HashMap<String, String> createLatexFile(TreeMap<String, Stats> statistics) {
+    public static HashMap<String, String> createLatexFile(TreeMap<Integer, Stats> statistics) {
         List<String> legends = statistics.values().iterator().next().states.keySet().stream().collect(Collectors.toList());
-        HashMap<String, String> result = createGraph(legends,statistics);
-        result.putAll(createTable(legends,statistics));
+        HashMap<String, String> result = createGraph(legends, statistics);
+        result.putAll(createTable(legends, statistics));
 
         return result;
     }
 
-    private static HashMap<String, String> createGraph(List<String> legends, TreeMap<String, Stats> statistics) {
+    private static HashMap<String, String> createGraph(List<String> legends, TreeMap<Integer, Stats> statistics) {
         StringBuilder resCompileTime = new StringBuilder();
         StringBuilder resStates = new StringBuilder();
         StringBuilder resTransition = new StringBuilder();
@@ -30,11 +30,14 @@ public class GenerateLatex {
             resTransition.append("\\addplot[color=" + colors[i] + ",mark=x] coordinates {\n");
             resPlys.append("\\addplot[color=" + colors[i] + ",mark=x] coordinates {\n");
 
-            for (Map.Entry<String, Stats> s : statistics.entrySet()) {
-                resCompileTime.append("(" + s.getKey() + "," + df2.format(s.getValue().compileTime.get(key)) + ")\n");
-                resStates.append("(" + s.getKey() + "," + s.getValue().states.get(key) + ")\n");
-                resTransition.append("(" + s.getKey() + "," + s.getValue().transitions.get(key) + ")\n");
-                resPlys.append("(" + s.getKey() + "," + s.getValue().plys.get(key) + ")\n");
+            for (Map.Entry<Integer, Stats> s : statistics.entrySet()) {
+                Stats value = s.getValue();
+                if (value.compileTime.containsKey(key) && value.states.containsKey(key)) {
+                    resCompileTime.append("(" + s.getKey() + "," + df2.format(value.compileTime.get(key)) + ")\n");
+                    resStates.append("(" + s.getKey() + "," + value.states.get(key) + ")\n");
+                    resTransition.append("(" + s.getKey() + "," + value.transitions.get(key) + ")\n");
+                    resPlys.append("(" + s.getKey() + "," + value.plys.get(key) + ")\n");
+                }
             }
             resCompileTime.append("};\n");
             resStates.append("};\n");
@@ -50,23 +53,25 @@ public class GenerateLatex {
         }};
     }
 
-    private static HashMap<String, String> createTable(List<String> legends, TreeMap<String, Stats> statistics) {
+    private static HashMap<String, String> createTable(List<String> legends, TreeMap<Integer, Stats> statistics) {
         StringBuilder table = new StringBuilder();
 
-        table.append("& & " +  statistics.keySet().stream().collect(Collectors.joining("&")) +"\\\\ \\hline \n");
+        Set<String> names = statistics.values().stream().findAny().map(e -> e.transitions.keySet()).get();
+        String collect = names.stream().collect(Collectors.joining("&"));
+        table.append("& & " + collect  + "\\\\ \\hline \n");
 
-        for(Map.Entry<String,Stats> row : statistics.entrySet()){
+        for (Map.Entry<Integer, Stats> row : statistics.entrySet()) {
             Stats s = row.getValue();
-            table.append("\\multirow{4}{*}{"+ row.getKey()+"} & States & " + s.states.values().stream().map(df2::format).collect(Collectors.joining(" & "))+ " \\\\[1mm]   \\cline{2-"+(legends.size() + 2)  +"} \n ");
-            table.append("& Transitions &" + s.transitions.values().stream().map(df2::format).collect(Collectors.joining(" & "))+ " \\\\[1mm]  \\cline{2-"+(legends.size() + 2) +"} \n ");
-            table.append(" & Plys & " + s.plys.values().stream().map(df2::format).collect(Collectors.joining(" & "))+ " \\\\[1mm]  \\cline{2-"+(legends.size() + 2)  +"} \n ");
-            table.append(" & Time (ms) &" + s.compileTime.values().stream().map(df2::format).collect(Collectors.joining(" & "))+ " \\\\[1mm] \\hline \n");
+            table.append("\\multirow{4}{*}{" + row.getKey() + "} & States & " + s.states.values().stream().map(df2::format).collect(Collectors.joining(" & "))  +" \\\\[1mm]   \\cline{2-" + (legends.size() + 2) + "} \n ");
+            table.append("& Transitions &" + s.transitions.values().stream().map(df2::format).collect(Collectors.joining(" & "))  + " \\\\[1mm]  \\cline{2-" + (legends.size() + 2) + "} \n ");
+            table.append(" & Plys & " + s.plys.values().stream().map(df2::format).collect(Collectors.joining(" & "))  + " \\\\[1mm]  \\cline{2-" + (legends.size() + 2) + "} \n ");
+            table.append(" & Time (sec) &" + s.compileTime.values().stream().map(df2::format).collect(Collectors.joining(" & "))  + " \\\\[1mm] \\hline \n");
         }
 
 
         return new HashMap<String, String>() {{
             put("statstable", table.toString());
-            put("columns", IntStream.rangeClosed(1, legends.size() + 2).mapToObj(i->"c").collect(Collectors.joining("|")));
+            put("columns", IntStream.rangeClosed(1, legends.size() + 2).mapToObj(i -> "c").collect(Collectors.joining("|")));
         }};
     }
 }

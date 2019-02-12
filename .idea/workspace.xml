@@ -7,10 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14a23320-90e0-478a-84da-4df3ada2795d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FDRExperiment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FDRExperiment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GenerateLatex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GenerateLatex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Stats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Stats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,25 +30,31 @@
     <session id="-1278635235">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="16" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.101" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.45" value="1" />
-          <entry key="project.open.time.59" value="1" />
+          <entry key="project.open.time.48" value="1" />
+          <entry key="project.open.time.50" value="1" />
+          <entry key="project.open.time.59" value="2" />
           <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.73" value="1" />
+          <entry key="project.open.time.76" value="1" />
+          <entry key="project.open.time.78" value="1" />
           <entry key="project.open.time.83" value="1" />
+          <entry key="project.open.time.94" value="1" />
           <entry key="project.open.time.96" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
           <entry key="csp" value="35" />
-          <entry key="java" value="27" />
+          <entry key="java" value="32" />
           <entry key="tex" value="22" />
           <entry key="xml" value="5" />
         </counts>
@@ -53,7 +62,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="27" />
+          <entry key="JAVA" value="32" />
           <entry key="PLAIN_TEXT" value="57" />
           <entry key="XML" value="5" />
         </counts>
@@ -61,14 +70,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="csp" value="214" />
-          <entry key="java" value="8383" />
+          <entry key="java" value="9324" />
           <entry key="tex" value="251" />
           <entry key="xml" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8383" />
+          <entry key="JAVA" value="9324" />
           <entry key="PLAIN_TEXT" value="465" />
           <entry key="XML" value="23" />
         </counts>
@@ -77,41 +86,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/FDRExperiment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GenerateLatex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+            <state relative-caret-position="405">
+              <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -126,8 +105,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StadiumSectionSize.csp">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="69" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/FDRExperiment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1020">
+              <caret line="73" selection-start-line="73" selection-end-line="73" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -148,6 +143,7 @@
       <find>legend</find>
       <find>legends</find>
       <find>latex</find>
+      <find>Syst</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -173,10 +169,10 @@
         <option value="$PROJECT_DIR$/ExhibitionAreaFirstApp.csp" />
         <option value="$PROJECT_DIR$/ExhibitionArea.csp" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/FDRExperiment.java" />
         <option value="$PROJECT_DIR$/src/main/java/Stats.java" />
         <option value="$PROJECT_DIR$/src/main/java/GenerateLatex.java" />
+        <option value="$PROJECT_DIR$/src/main/java/FDRExperiment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
       </list>
     </option>
   </component>
@@ -199,7 +195,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -250,7 +246,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -259,7 +255,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548092593122" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549542397677" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -269,15 +265,15 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Examples" />
       <recent name="$PROJECT_DIR$/Examples/Stadium" />
       <recent name="$PROJECT_DIR$/Examples/ArtGallery/ExhibitionArea" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -350,6 +346,13 @@
       <workItem from="1548054021954" duration="125000" />
       <workItem from="1548059799705" duration="2008000" />
       <workItem from="1548088400706" duration="4274000" />
+      <workItem from="1548139951415" duration="1145000" />
+      <workItem from="1548354008765" duration="35000" />
+      <workItem from="1548415692654" duration="1753000" />
+      <workItem from="1548428610093" duration="1233000" />
+      <workItem from="1549540118577" duration="1646000" />
+      <workItem from="1549953607346" duration="4059000" />
+      <workItem from="1549969631794" duration="466000" />
     </task>
     <servers />
   </component>
@@ -368,7 +371,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50509000" />
+    <option name="totallyTimeSpent" value="60846000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -381,8 +384,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1337" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17831613" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18665607" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -391,7 +395,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329927" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.19759037" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3060241" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.51566267" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -452,8 +456,50 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
+          <line>19</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>someFile.substring(someFile.lastIndexOf(String.valueOf(size))).replaceAll(&quot;[0-9]&quot;,&quot;&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>someFile.lastIndexOf(size+&quot;&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>someFile.lastIndexOf(size)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>someFile.substring(someFile.lastIndexOf(size))</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>someFile.replaceAll(&quot;[a-zA-Z]&quot;,&quot;&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>someFile.replaceAll(&quot;\\w&quot;,&quot;&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>s.getValue().compileTime</expression-string>
         <language-id>JAVA</language-id>
@@ -466,36 +512,6 @@
       </expression>
       <expression>
         <expression-string>df2.format(s.getValue().compileTime.get(i))</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>&quot;(&quot; + s.getKey() + &quot;,&quot; + df2.format(s.getValue().compileTime.get(i)) + &quot;)\n&quot;</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>new String(data, &quot;UTF-8&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>source.split(&quot;\\n&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>new JSONObject(source).get(&quot;results&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>data.toString()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>new JSONObject(data.toString())</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -561,15 +577,15 @@
     <entry file="file://$PROJECT_DIR$/target/classes/Stats.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/StadiumSectionSize.csp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="15">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StadiumSectionSize.csp">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Stats.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -578,27 +594,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GenerateLatex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/FDRExperiment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+        <state relative-caret-position="1020">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="69" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GenerateLatex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
         </state>
       </provider>
     </entry>

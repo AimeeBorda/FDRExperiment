@@ -5,40 +5,38 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.TreeMap;
 
-//import org.json.JSONObject;
-
 class FDRExperiment {
 
-    TreeMap<String, Stats> statistics = new TreeMap<>();
+    TreeMap<Integer, Stats> statistics = new TreeMap<>();
 
-    public FDRExperiment() throws IOException {
 
-        File[] listOfFiles = new File("/Users/aimee/phd/dissertation/CSP Examples/Stadium").listFiles();
+
+    public FDRExperiment(String dirName) throws IOException {
+
+        File[] listOfFiles = new File(dirName).listFiles();
         for (File file : listOfFiles) {
 
-            if (file.getName().startsWith("someFile") && file.getName().endsWith(".json")) {
+            if (file.getName().endsWith(".json")) {
                 parseJSON(file);
-            } else if (file.getName().startsWith("otherFile") && file.getName().endsWith(".txt")) {
+            } else if (file.getName().endsWith(".txt")) {
                 parseTXT(file);
             }
         }
 
         HashMap<String, String> map = GenerateLatex.createLatexFile(statistics);
-        modifyFile("/Users/aimee/phd/dissertation/CSP Examples/Stadium/LatexTemplate.s", "R", map);
+        modifyFile("/Users/aimee/downloads/LatexTemplate.s", map,dirName+"latexFile.tex");
     }
 
     private void parseTXT(File listOfFile) throws IOException {
         FileInputStream fis = new FileInputStream(listOfFile);
         byte[] data = new byte[(int) listOfFile.length()];
         fis.read(data);
+
         fis.close();
 
-        String regex = "(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)";
-        String someFile = listOfFile.getName().replace("otherFile", "").replace(".txt", "");
-        someFile = someFile.replaceAll("(?<=[A-Z])(?=[A-Z])|(?<=[a-z])(?=[A-Z])|(?<=\\D)$", "1");
-        String[] atoms = someFile.split(regex);
-        String size = atoms[0];
-        String req = atoms[1];
+        String someFile = listOfFile.getName().replace(".txt", "");
+        int size = Integer.parseInt(someFile.replaceAll("[a-zA-Z]",""));
+        String req = someFile.substring(someFile.lastIndexOf(String.valueOf(size))).replaceAll("[0-9]","");
 
         Stats s = new Stats();
         if (this.statistics.containsKey(size))
@@ -60,13 +58,11 @@ class FDRExperiment {
         fis.close();
 
 
-        String regex = "(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)";
-        String someFile = listOfFile.getName().replace("someFile", "").replace(".json", "");
-        someFile = someFile.replaceAll("(?<=[A-Z])(?=[A-Z])|(?<=[a-z])(?=[A-Z])|(?<=\\D)$", "1");
-        String[] atoms = someFile.split(regex);
-        String size = atoms[0];
-        String req = atoms[1];
+        String someFile = listOfFile.getName().replace(".json", "");
+        int size = Integer.parseInt(someFile.replaceAll("[a-zA-Z]",""));
+        String req = someFile.substring(someFile.lastIndexOf(String.valueOf(size))).replaceAll("[0-9]","");
         Stats s = new Stats();
+
         if (statistics.containsKey(size)) {
             s = statistics.get(size);
         } else {
@@ -74,7 +70,11 @@ class FDRExperiment {
         }
 
         String source = new String(data, "UTF-8");
-        JSONObject next = ((JSONArray) new JSONObject(source).get("results")).getJSONObject(0);
+        System.out.println(someFile);
+        JSONObject jsonObject = new JSONObject(source);
+
+        JSONObject next = ((JSONArray) jsonObject.get("results")).getJSONObject(0);
+
         s.transitions.put(req, next.getDouble("visited_transitions"));
         s.states.put(req, next.getDouble("visited_states"));
         s.plys.put(req, next.getDouble("visited_plys"));
@@ -82,9 +82,8 @@ class FDRExperiment {
     }
 
 
-    private void modifyFile(String filePath, String prefix, HashMap<String, String> def) throws IOException {
+    private void modifyFile(String filePath, HashMap<String, String> def,String fileName) throws IOException {
         File fileToBeModified = new File(filePath);
-        String fileName = fileToBeModified.getAbsolutePath().replace(".s", prefix + ".tex");
         String oldContent = "";
         BufferedReader reader = null;
         FileWriter writer = null;
@@ -104,6 +103,7 @@ class FDRExperiment {
         }
         writer = new FileWriter(fileName);
         writer.write(newContent);
+
         reader.close();
 
         writer.close();
