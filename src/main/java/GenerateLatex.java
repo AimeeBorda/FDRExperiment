@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 public class GenerateLatex {
 
     private final static String[] colors = {"red", "blue", "green", "yellow", "purple", "orange", "black", "brown", "gray", "awesome", "cyan", "azure", "bazaar", "blue-green", "brightube"};
+    private final static String[] symbol = {"x", "diamond", "square", "star", "triangle","otimes", "oplus", "halfcircle"};
     private static DecimalFormat df2 = new DecimalFormat("#.##");
 
     public static HashMap<String, String> createLatexFile(TreeMap<Integer, Stats> statistics) {
@@ -25,9 +26,9 @@ public class GenerateLatex {
 
         for (int i = 0; i < legends.size(); i++) {
             String key = legends.get(i);
-            resCompileTime.append(" \\addlegendentry{" + key + "} \n \\addplot[color=" + colors[i] + ",mark=x] coordinates {\n");
+            resCompileTime.append("\\addplot[color=" + colors[i] + ",mark=x] coordinates {\n");
             resStates.append("\\addplot[color=" + colors[i] + ",mark=x] coordinates {\n");
-            resTransition.append("\\addplot[color=" + colors[i] + ",mark=x] coordinates {\n");
+            resTransition.append(" \\addlegendentry{" + key + "} \n \\addplot[color=" + colors[i] + ",mark=x] coordinates {\n");
             resPlys.append("\\addplot[color=" + colors[i] + ",mark=x] coordinates {\n");
 
             for (Map.Entry<Integer, Stats> s : statistics.entrySet()) {
