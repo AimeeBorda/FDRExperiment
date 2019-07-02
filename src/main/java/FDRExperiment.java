@@ -24,7 +24,7 @@ class FDRExperiment {
         }
 
         HashMap<String, String> map = GenerateLatex.createLatexFile(statistics);
-        modifyFile("/Users/aimee/downloads/LatexTemplate.s", map,dirName+"latexFile.tex");
+        modifyFile( map,dirName+"latexFile.tex");
     }
 
     private void parseTXT(File listOfFile) throws IOException {
@@ -82,8 +82,8 @@ class FDRExperiment {
     }
 
 
-    private void modifyFile(String filePath, HashMap<String, String> def,String fileName) throws IOException {
-        File fileToBeModified = new File(filePath);
+    private void modifyFile(HashMap<String, String> def,String fileName) throws IOException {
+        File fileToBeModified = new File("LatexTemplate.tex");
         String oldContent = "";
         BufferedReader reader = null;
         FileWriter writer = null;

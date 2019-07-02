@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{standalone}
 
 
 \usepackage{multirow}
@@ -29,23 +29,17 @@
 
 \begin{document}
 
-\begin{scaletikzpicturetowidth}{\textwidth}
+\begin{scaletikzpicturetowidth}{\linewidth}
 \begin{tikzpicture}[scale=\tikzscale]
 \begin{axis}[xlabel=No. of Visitors in Exhibition Area,ylabel=Time (sec),legend style={at={(0.5,-0.1)},anchor=north}]
           	|COMPILETIMEGRAPH|
 \end{axis}
 \end{tikzpicture}
-\end{scaletikzpicturetowidth}
-
-\begin{scaletikzpicturetowidth}{\textwidth}
 \begin{tikzpicture}[scale=\tikzscale]
  \begin{axis}[xlabel=No. of Visitors in Exhibition Area,ylabel=States,legend style={at={(0.5,-0.1)},anchor=north}]
  	|STATESGRAPH|
  \end{axis}
  \end{tikzpicture}
-\end{scaletikzpicturetowidth}
-
-\begin{scaletikzpicturetowidth}{\textwidth}
 \begin{tikzpicture}[scale=\tikzscale]
  \begin{axis}[xlabel=No. of Visitors in Exhibition Area,ylabel=Transitions,anchor=north}]
  	|TRANSITIONSGRAPH|
